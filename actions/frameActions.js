@@ -13,3 +13,26 @@ export function noticeTabbar(activebar,hastabbar){
     
    }
 }
+
+export function showModal(txt){
+    console.log(txt)
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.SHOW_ERROR_MODAL,
+            payLoad:{
+                txt:txt
+            }
+        })
+    
+   }
+}
+
+export function hideModal(){
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.CLOSE_ERROR_MODAL
+            
+        })
+    
+   }
+}

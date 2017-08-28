@@ -17,6 +17,8 @@
         frame
     */
     FETCH_FRAME_DATA:'FETCH_FRAME_DATA',
+    SHOW_ERROR_MODAL:'SHOW_ERROR_MODAL',
+    CLOSE_ERROR_MODAL:'CLOSE_ERROR_MODAL',
     /*
     mine
     */
@@ -29,6 +31,7 @@
     /*
     *addmovie
     */
-    ADD_MOVIE:'ADD_MOVIE'
+    ADD_MOVIE:'ADD_MOVIE',
+    ADD_MOVIE_ERROR:'ADD_MOVIE_ERROR',
 }
 export default types

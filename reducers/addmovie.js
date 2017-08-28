@@ -15,7 +15,13 @@ export default function play(state =initialState1, action) {
         data:addedMovie,
         dataSaved:true
       }
-    
+      case types.ADD_MOVIE_ERROR:
+        
+        return {
+          ...state,
+          erroropen:action.payLoad.erroropen
+        }
+      
     default:
       return state
   }

@@ -41,6 +41,7 @@ const XHR=(name,jsondata,loadtype)=>{
                 .catch(err=>{
                     if(err.response){
                         console.log(err.response);
+                        reject({'message':err.response.data.message})
                     }else if(err.request){
                         console.log(err.request);
                     }else{

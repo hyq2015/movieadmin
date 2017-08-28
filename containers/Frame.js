@@ -17,6 +17,10 @@ import Download from 'material-ui/svg-icons/file/file-download';
 import Delete from 'material-ui/svg-icons/action/delete';
 import FontIcon from 'material-ui/FontIcon';
 
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import '../src/styles/app.less'
 import Tabbar from '../components/Tabbar'
 
@@ -46,8 +50,30 @@ class Frame extends Component{
     }
     render(){
         const {activebar,tabshow,noticeTabbar}=this.props;
+        const actions = [
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.props.hideModal}
+            />,
+            <FlatButton
+                label="Submit"
+                primary={true}
+                keyboardFocused={true}
+                onClick={this.props.hideModal}
+            />,
+        ];
         return(
             <div>
+                <Dialog
+                    title="出错啦"
+                    actions={actions}
+                    modal={true}
+                    open={this.props.open}
+                    onRequestClose={this.props.hideModal}
+                >
+                    {this.props.errorTxt}
+                </Dialog>
                 <AppBar
                     title="好电影,看好看的"
                 />

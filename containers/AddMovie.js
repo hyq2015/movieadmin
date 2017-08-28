@@ -2,6 +2,8 @@ import React ,{Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AddmovieActions from '../actions/addMovieActions'
+import * as frameActions from '../actions/frameActions'
+
 import { withRouter } from 'react-router-dom'
 import '../src/styles/addmovie.less'
 
@@ -36,6 +38,11 @@ class AddMovie extends Component{
         this.setState({
             movie:movie
         })
+    }
+    componentDidUpdate(){
+        if(this.props.erroropen){
+            this.props.frameActions.showModal(this.props.erroropen)
+        }
     }
     render(){
         return(
@@ -96,7 +103,7 @@ class AddMovie extends Component{
                         onChange={(e,val)=>this.changeVal(e,val,'desc')}
                     />
                 </div>
-                <RaisedButton label="提交" primary={true} onClick={()=>this.props.addmovie.Addmovie(this.state.movie)} style={{width:'100%'}} />
+                <RaisedButton label="提交" primary={true} onClick={()=>this.props.addmovieActions.Addmovie(this.state.movie)} style={{width:'100%'}} />
             </div>
         )
     }
@@ -109,7 +116,8 @@ function mapStateToProps(state) {
   //将action的所有方法绑定到props上
   function mapDispatchToProps(dispatch) {
     return {
-        addmovie:bindActionCreators(AddmovieActions, dispatch)
+        addmovieActions:bindActionCreators(AddmovieActions, dispatch),
+        frameActions:bindActionCreators(frameActions, dispatch)
     }
   }
   export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddMovie))
