@@ -1,0 +1,26 @@
+@borderRadius:5px;
+@blueColor:rgba(0,200,251,1);
+@strongColor:#7b7b7b;
+@fadeColor:#bbbbbb;
+@contentColor:#000;
+#playContainer{
+    color:@contentColor;padding-bottom:49px;
+    .topbg{
+       transition: all .5s;position: relative;
+       overflow: hidden;
+       height: 325px;
+       .black-shade{
+           display: block;
+           position: absolute;top: 0;left: 0;
+           width: 100%;height: 100%;z-index: 500;
+           background-color: rgba(255,255,255,0.2);
+       }
+       .empty-tag{
+           margin-bottom: 49px;
+       }
+    }
+    .cardTitle{
+        line-height: 1;
+    }
+}
+
