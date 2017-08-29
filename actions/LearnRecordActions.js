@@ -3,13 +3,12 @@ import XHR from '../src/js/XHR'
 import _ from 'lodash'
 import * as frameActions from '../actions/frameActions'
 
-export function Addmovie(jsondata){
-  console.log('发起请求')
+export function Addrecord(jsondata){
     return (dispatch, getState) => {
         XHR('addmovie',jsondata)
         .then(res=>{
             dispatch({
-                type:types.ADD_MOVIE,
+                type:types.ADD_LEARN_RECORD,
                 payLoad:{
                   addedMovie:res
                 }

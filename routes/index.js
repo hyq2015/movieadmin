@@ -4,6 +4,7 @@ import Frame from '../containers/Frame';
 // import Welfare from '../containers/Welfare';
 import Play from '../containers/Play';
 import AddMovie from '../containers/AddMovie';
+import LearnRecord from '../containers/LearnRecord';
 // import Mine from '../containers/Mine';
 import {
   BrowserRouter as Router,
@@ -22,8 +23,9 @@ const Routes=()=>{
             <Frame>
                 <Switch>
                     <Route path="/" exact component={Play}/>
-                    <Route path="/play" component={Play}></Route>
+                    <Route path="/movie/list" component={Play}></Route>
                     <Route path="/movie/add" component={AddMovie}></Route>
+                    <Route path="/learnrecord" component={LearnRecord}></Route>
                 </Switch>
                 
             </Frame>

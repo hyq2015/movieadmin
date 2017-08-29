@@ -2,9 +2,7 @@ import React ,{Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AddmovieActions from '../actions/addMovieActions'
-import * as frameActions from '../actions/frameActions'
 
-import { withRouter } from 'react-router-dom'
 import '../src/styles/addmovie.less'
 
 import TextField from 'material-ui/TextField';
@@ -39,11 +37,7 @@ class AddMovie extends Component{
             movie:movie
         })
     }
-    componentDidUpdate(){
-        if(this.props.erroropen){
-            this.props.frameActions.showModal(this.props.erroropen)
-        }
-    }
+    
     render(){
         return(
             <div id="addmovieContainer">
@@ -116,8 +110,7 @@ function mapStateToProps(state) {
   //将action的所有方法绑定到props上
   function mapDispatchToProps(dispatch) {
     return {
-        addmovieActions:bindActionCreators(AddmovieActions, dispatch),
-        frameActions:bindActionCreators(frameActions, dispatch)
+        addmovieActions:bindActionCreators(AddmovieActions, dispatch)
     }
   }
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddMovie))
+  export default connect(mapStateToProps, mapDispatchToProps)(AddMovie)

@@ -27,20 +27,20 @@ let pageSize=10;
         document.title='好电影'
     }
     componentDidMount(){
-        if(this.props.theme.content.length<1){
+        if(this.props.lists.data.length<1){
             this.props.play.fetchData({'pageNo':1,'pageSize':pageSize})
         }
         
-        if(this.props.dataLoaded){
+        // if(this.props.dataLoaded){
            
-            let scrollBarPosition=SCROLL_POSITION.getCache(this.props.location.pathname);
+        //     let scrollBarPosition=SCROLL_POSITION.getCache(this.props.location.pathname);
             
-            if(scrollBarPosition){
-                window.scrollTo(0,scrollBarPosition)
-            }
-        }else{
-            window.scrollTo(0,0)
-        }
+        //     if(scrollBarPosition){
+        //         window.scrollTo(0,scrollBarPosition)
+        //     }
+        // }else{
+        //     window.scrollTo(0,0)
+        // }
     }
     componentWillUnmount(){
         SCROLL_POSITION.addCatche(this.props.location.pathname,document.body.scrollTop)
@@ -102,4 +102,4 @@ function mapDispatchToProps(dispatch) {
       frame:bindActionCreators(frameActions, dispatch)
   }
 }
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Play))
+export default connect(mapStateToProps, mapDispatchToProps)(Play)
