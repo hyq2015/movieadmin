@@ -14,9 +14,27 @@ export function Addmovie(jsondata){
                   addedMovie:res
                 }
             })
+            dispatch(frameActions.showSuccessToast('操作成功',2000))
           })
         .catch(err=>{
           dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
         })
       }
+}
+
+export function getQiniuToken(){
+  return (dispatch, getState) => {
+    XHR('getQiniuToken',{})
+    .then(res=>{
+        dispatch({
+            type:types.GET_QINIU_TOKEN,
+            payLoad:{
+              token:res.data.token
+            }
+        })
+      })
+    .catch(err=>{
+      dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
+    })
+  }
 }

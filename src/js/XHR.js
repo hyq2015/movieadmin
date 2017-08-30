@@ -18,6 +18,18 @@ export const URL={
         'url':BASE_URL+'/api/movie/add',
         'method':'post'
     },
+    'addcodeTemplate':{
+        'url':BASE_URL+'/api/codetemplate/add',
+        'method':'post'
+    },
+    'getcodeTemplateList':{
+        'url':BASE_URL+'/api/codetemplate/list',
+        'method':'get'
+    },
+    'getQiniuToken':{
+        'url':BASE_URL+'/api/uptoken',
+        'method':'get'
+    },
     getBannerIndexItem:{
         url:BASE_URL+'/api/app/index/getBannerIndexItem',
         method:'post'

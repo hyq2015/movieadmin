@@ -6,6 +6,7 @@ import * as frameActions from '../actions/frameActions'
 import { withRouter } from 'react-router-dom'
 import SCROLL_POSITION from '../src/js/catcheState'
 
+import PUBLIC from '../src/js/public'
 import '../src/styles/play.less'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 let u = navigator.userAgent;
@@ -77,7 +78,7 @@ let pageSize=10;
                             overlay={<CardTitle title={item.name+'('+item.score+')'} subtitle={item.tag ? item.tag : "高分科幻电影"} />}
                             style={{width:300,height:300}}
                         >
-                            <img src={item.imgurl} alt="" style={{height:300,width:300}} />
+                            <img src={item.imgurl+PUBLIC.cropImg(300,300)} alt="" style={{height:300,width:300}} />
                         </CardMedia>
                         <CardTitle title="上映时间" subtitle={item.releaseTime} />
                         <CardTitle style={{wordBreak:'break-all'}} title="下载地址" subtitle={item.downloadurl} />

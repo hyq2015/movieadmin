@@ -23,7 +23,8 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import '../src/styles/app.less'
-import Tabbar from '../components/Tabbar'
+import ActionToast from '../components/actionToast'
+
 
 const style = {
     paper: {
@@ -60,6 +61,13 @@ class Frame extends Component{
         ];
         return(
             <div className="app-container" style={{height: 'calc(100vh - 64px)'}}>
+                <ActionToast 
+                    actiontxt={this.props.remindTxt}
+                    open={this.props.successToastOpen}
+                    hideDuration={this.props.hideDuration}
+                    onRequestClose={this.props.hideSuccessToast}
+                />
+                
                 <Dialog
                     title="出错啦"
                     actions={actions}
@@ -70,14 +78,14 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="好电影,看好看的"
+                    title="Ricky的杂货店"
                     style={{position:'fixed',top:0,left:0}}
                 />
                 <Paper style={style.paper}>
                     <Menu
                         selectedMenuItemStyle={{color:'#00c8fb'}}
                     >
-                        <MenuItem primaryText="电影列表" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
+                        <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
                         <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
                         {/* <Divider /> */}

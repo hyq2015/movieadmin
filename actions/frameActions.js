@@ -36,3 +36,27 @@ export function hideModal(){
     
    }
 }
+
+export function showSuccessToast(txt,duration){
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.SHOW_SUCCESS_TOAST,
+            payLoad:{
+                txt:txt,
+                duration:duration
+            }
+            
+        })
+    
+   }
+}
+
+export function hideSuccessToast(){
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.HIDE_SUCCESS_TOAST
+        })
+    
+   }
+}
+

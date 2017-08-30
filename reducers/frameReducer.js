@@ -3,6 +3,7 @@ const initialState={
     activebar:1,
     tabshow:true,
     open:false,
+    successToastOpen:false,
     errorTxt:''
 }
 export default function counter(state =initialState, action) {
@@ -19,12 +20,24 @@ export default function counter(state =initialState, action) {
                 open:false
             }
         case types.SHOW_ERROR_MODAL:
-        console.log('show modal')
             return{
                 ...state,
                 open:true,
                 errorTxt:action.payLoad.txt
             }
+        case types.SHOW_SUCCESS_TOAST:
+            return{
+                ...state,
+                successToastOpen:true,
+                remindTxt:action.payLoad.txt,
+                hideDuration:action.payLoad.duration
+            }
+        case types.HIDE_SUCCESS_TOAST:
+            return{
+                ...state,
+                successToastOpen:false,
+            }
+            
         default:
             return state
     }

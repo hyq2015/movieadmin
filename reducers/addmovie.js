@@ -7,20 +7,25 @@ export default function play(state =initialState1, action) {
   switch (action.type) {
     
     case types.ADD_MOVIE:
-      let newTheme=action.payLoad.addedMovie;
+      let addedMovie=action.payLoad.addedMovie;
       // newTheme.content=state.theme.content.concat(newTheme.content)
-      console.log(newTheme)
       return {
         ...state,
         data:addedMovie,
         dataSaved:true
       }
-      case types.ADD_MOVIE_ERROR:
+    case types.ADD_MOVIE_ERROR:
         
-        return {
-          ...state,
-          erroropen:action.payLoad.erroropen
-        }
+      return {
+        ...state,
+        erroropen:action.payLoad.erroropen
+      }
+
+    case types.GET_QINIU_TOKEN:
+      return {
+        ...state,
+        token:action.payLoad.token
+      }
       
     default:
       return state
