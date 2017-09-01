@@ -23,13 +23,13 @@ module.exports = {
     progress: true,
     inline: false,
     publicPath: '/',
-    // proxy: {
-    //     '/alpha/api/': {
-    //         target: proxy,
-    //         changeOrigin: true,
-    //         pathRewrite: {'^/alpha/api/' : '/alpha/api/'},
-    //       }
-    // }
+    proxy: {
+        '/api/': {
+            target: 'http://192.168.31.204:8989',
+            changeOrigin: true,
+            pathRewrite: {'^/api/' : '/api/'},
+          }
+    }
   },
   plugins: [
     // new webpack.DefinePlugin({

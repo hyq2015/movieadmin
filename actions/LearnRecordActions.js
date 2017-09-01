@@ -14,6 +14,7 @@ export function Addrecord(jsondata){
                 }
             })
             dispatch(frameActions.showSuccessToast('操作成功',2000))
+            dispatch(GetRecodList({pageNo:1,pageSize:100}))
           })
         .catch(err=>{
           dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
@@ -32,6 +33,25 @@ export function GetRecodList(jsondata){
             }
         })
         
+      })
+    .catch(err=>{
+      dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
+    })
+  }
+}
+
+export function Updaterecord(jsondata){
+  return (dispatch, getState) => {
+    XHR('updateCodetemplate',jsondata)
+    .then(res=>{
+        dispatch({
+            type:types.UPDATE_LEARN_RECORD,
+            payLoad:{
+              template:res
+            }
+        })
+        dispatch(frameActions.showSuccessToast('操作成功',2000))
+        dispatch(GetRecodList({pageNo:1,pageSize:100}))
       })
     .catch(err=>{
       dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!

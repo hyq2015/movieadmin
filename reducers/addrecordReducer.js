@@ -21,6 +21,13 @@ export default function play(state =initialState1, action) {
         ...state,
         list:action.payLoad.list.data,
       }
+
+    case types.UPDATE_LEARN_RECORD:
+      
+      return {
+        ...state,
+        template:action.payLoad.template.data,
+      }
       
     default:
       return state

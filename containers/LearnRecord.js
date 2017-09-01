@@ -10,7 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FontIcon from 'material-ui/FontIcon';
 import Slider from 'material-ui/Slider';
 import TextField from 'material-ui/TextField';
-
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
 const styles = {
     block: {
@@ -31,11 +31,17 @@ class LearnRecord extends Component{
             templateName:'',
             templateContent:'',
             currentTemplate:'',
+            currentUpdateTem:''
         }
         this.changeVal=this.changeVal.bind(this);
         this.submit=this.submit.bind(this);
         this.changeRadio=this.changeRadio.bind(this);
+        this.update=this.update.bind(this);
+        this.updateVal=this.updateVal.bind(this);
         this.templateContentChange=this.templateContentChange.bind(this);
+        this.templateContentUpdate=this.templateContentUpdate.bind(this);
+        this.changeSearchVal=this.changeSearchVal.bind(this);
+        this.search=this.search.bind(this);
         
     }
     componentDidMount(){
@@ -62,11 +68,49 @@ class LearnRecord extends Component{
             this.props.LearnRecordActions.Addrecord({name:this.state.templateName,template:this.state.templateContent})
         }
     }
+    update(){
+        console.log(this.state.currentTemplate)
+        if(!this.state.currentTemplate){
+            this.props.FrameActions.showModal('当前没有选择模板')
+        }else{
+            this.props.LearnRecordActions.Updaterecord({id:this.state.currentUpdateTem._id,name:this.state.currentUpdateTem.name,template:this.state.currentUpdateTem.template})
+        }
+    }
+    updateVal(e,val){
+        this.setState({
+            currentUpdateTem:{
+                ...this.state.currentUpdateTem,
+                name:val
+            }
+        })
+    }
+    templateContentUpdate(e){
+        this.setState({
+            currentUpdateTem:{
+                ...this.state.currentUpdateTem,
+                template:e.target.value
+            }
+        })
+    }
     changeRadio(e,value){
         let index=e.target.getAttribute('data-index');
         this.setState({
-            currentTemplate:this.props.list[index]
+            currentTemplate:this.props.list[index],
+            currentUpdateTem:this.props.list[index]
         })
+    }
+    changeSearchVal(e,val){
+        this.setState({
+            searchTxt:val
+        })
+    }
+    search(){
+        if(!this.state.searchTxt){
+            this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100})
+        }else{
+            this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100,key:this.state.searchTxt})
+        }
+        
     }
     render(){
         return(
@@ -89,17 +133,31 @@ class LearnRecord extends Component{
                 
                 </div>
                 <div className="updatePart">
+                    <div
+                        style={{display:'flex',justifyContent:'space-between',width:'100%'}}
+                    >
+                        <TextField
+                            hintText="输入名称进行搜索"
+                            className="input-filed"
+                            style={{width:'100%'}}
+                            onChange={(e,val)=>this.changeSearchVal(e,val)}
+                        />
+                        <RaisedButton onClick={this.search} label="搜索" secondary={true} style={{...styles.button,marginRight:0,marginLeft:10}} />
+                    </div>
+                    
                     <div>
                         <TextField
                             hintText="当前模板名称"
                             className="input-filed"
                             style={{width:'100%'}}
-                            value={this.state.currentTemplate.name}
+                            onChange={(e,val)=>this.updateVal(e,val)}
+                            value={this.state.currentUpdateTem.name}
                         />
+
                     </div>
                     
                     <div>
-                        <textarea  className="gen_area" placeholder="模板内容" value={this.state.currentTemplate.template}></textarea>
+                        <textarea onChange={this.templateContentUpdate}  className="gen_area" placeholder="模板内容" value={this.state.currentUpdateTem.template}></textarea>
                     </div>
                     {this.props.list.length>0 ? 
                         <RadioButtonGroup
@@ -118,7 +176,7 @@ class LearnRecord extends Component{
                         
                         </RadioButtonGroup> : null
                     }
-                    
+                    <RaisedButton label="提交修改" onClick={this.update} secondary={true} style={styles.button} />
                 </div>
                 
             </div>

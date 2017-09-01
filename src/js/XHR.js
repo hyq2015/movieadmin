@@ -1,6 +1,7 @@
 import axios from 'axios'
 import 'babel-polyfill'
-const BASE_URL='http://192.168.31.204:8989'
+// const BASE_URL='http://192.168.31.204:8989'
+const BASE_URL=''
 export const URL={
     'saveAddress':{
         'url':BASE_URL+'/api/user/saveshippingaddr',
@@ -20,6 +21,10 @@ export const URL={
     },
     'addcodeTemplate':{
         'url':BASE_URL+'/api/codetemplate/add',
+        'method':'post'
+    },
+    'updateCodetemplate':{
+        'url':BASE_URL+'/api/codetemplate/update',
         'method':'post'
     },
     'getcodeTemplateList':{
