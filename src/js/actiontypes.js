@@ -42,5 +42,10 @@
     ADD_LEARN_RECORD:'ADD_LEARN_RECORD',
     LEARN_RECORD_LIST:'LEARN_RECORD_LIST',
     UPDATE_LEARN_RECORD:'UPDATE_LEARN_RECORD',
+    /**
+     * user login
+    */
+    USER_LOGIN:'USER_LOGIN',
+    USER_LOGOUT:'USER_LOGOUT',
 }
 export default types

@@ -5,6 +5,7 @@ import Frame from '../containers/Frame';
 import Play from '../containers/Play';
 import AddMovie from '../containers/AddMovie';
 import LearnRecord from '../containers/LearnRecord';
+import Login from '../containers/Login';
 // import Mine from '../containers/Mine';
 import {
   BrowserRouter as Router,
@@ -23,6 +24,7 @@ const Routes=()=>{
             <Frame>
                 <Switch>
                     <Route path="/" exact component={Play}/>
+                    <Route path="/user/auth" exact component={Login}/>
                     <Route path="/movie/list" component={Play}></Route>
                     <Route path="/movie/add" component={AddMovie}></Route>
                     <Route path="/learnrecord" component={LearnRecord}></Route>

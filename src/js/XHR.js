@@ -35,6 +35,15 @@ export const URL={
         'url':BASE_URL+'/api/uptoken',
         'method':'get'
     },
+    'userLogin':{
+        'url':BASE_URL+'/api/user/add',
+        'method':'post'
+    },
+    'userLogout':{
+        'url':BASE_URL+'/api/user/logout',
+        'method':'get'
+    },
+    
     getBannerIndexItem:{
         url:BASE_URL+'/api/app/index/getBannerIndexItem',
         method:'post'
@@ -58,6 +67,8 @@ const XHR=(name,jsondata,loadtype)=>{
                 .catch(err=>{
                     if(err.response){
                         console.log(err.response);
+                        window.location.href='/user/auth';
+                        return
                         reject({'message':err.response.data.message})
                     }else if(err.request){
                         console.log(err.request);
@@ -81,6 +92,10 @@ const XHR=(name,jsondata,loadtype)=>{
                 .catch(err=>{
                     if(err.response){
                         console.log(err.response);
+                        if(err.response.status==403){//未登录
+                            window.location.href='/user/auth';
+                            return
+                        }
                     }else if(err.request){
                         console.log(err.request);
                     }else{

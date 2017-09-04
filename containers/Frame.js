@@ -15,8 +15,10 @@ import FingerPrint from 'material-ui/svg-icons/action/fingerprint';
 import Divider from 'material-ui/Divider';
 import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import Download from 'material-ui/svg-icons/file/file-download';
+import Pantool from 'material-ui/svg-icons/action/lock';
 import Delete from 'material-ui/svg-icons/action/delete';
 import FontIcon from 'material-ui/FontIcon';
+import Toggle from 'material-ui/Toggle';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -36,12 +38,16 @@ const style = {
         textAlign: 'center',
         lineHeight: '24px',
     },
+    toggle:{
+        marginBottom: 16
+    }
 };
 
 class Frame extends Component{
     constructor(props){
         super(props)
         this.clickItem=this.clickItem.bind(this)
+        this.toggle=this.toggle.bind(this)
     }
     componentDidMount(){
         console.log(this.props)
@@ -49,6 +55,13 @@ class Frame extends Component{
     clickItem(link){
         
         this.props.history.push(link)
+    }
+    toggle(e,checked){
+        if(!checked){
+            this.refs.bgmusic.pause()
+        }else{
+            this.refs.bgmusic.play()
+        }
     }
     render(){
         const {activebar,tabshow,noticeTabbar}=this.props;
@@ -80,11 +93,23 @@ class Frame extends Component{
                 <AppBar
                     title="Ricky的杂货店"
                     style={{position:'fixed',top:0,left:0}}
+                    iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
+                    iconElementRight={<Toggle 
+                        label="music" trackSwitchedStyle={{backgroundColor:'#fff'}}
+                        thumbSwitchedStyle={{backgroundColor:'#00c8fb'}}
+                        labelStyle={{color:'#fff'}}
+                        onToggle={this.toggle}
+                        defaultToggled={true}
+                    />}
                 />
+                <div>
+                    <audio src="http://ovhjj2x39.bkt.clouddn.com/jaychou_srz.mp3" autoPlay ref="bgmusic"></audio>
+                </div>
                 <Paper style={style.paper}>
                     <Menu
                         selectedMenuItemStyle={{color:'#00c8fb'}}
                     >
+                        <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/user/auth')} leftIcon={<Pantool />} />
                         <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
                         <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
