@@ -51,8 +51,6 @@ export const URL={
 
 }
 const XHR=(name,jsondata,loadtype)=>{
-    console.log(name)
-    console.log(jsondata)
     if(URL[name]){
         if(URL[name].method=='post'){
             return new Promise((resolve, reject)=>{
@@ -66,10 +64,12 @@ const XHR=(name,jsondata,loadtype)=>{
                 })
                 .catch(err=>{
                     if(err.response){
-                        console.log(err.response);
-                        window.location.href='/user/auth';
-                        return
-                        reject({'message':err.response.data.message})
+                        if(err.response.status==403){//未登录
+                            window.location.href='/user/auth';
+                            return
+                        }else{
+                            reject({'message':err.response.data.message})
+                        }
                     }else if(err.request){
                         console.log(err.request);
                     }else{
@@ -83,7 +83,6 @@ const XHR=(name,jsondata,loadtype)=>{
             return new Promise((resolve, reject)=>{
                 REQUESTS.get(URL[name].url,jsondata)
                 .then(res=>{
-                    console.log(res)
                     if(res.data){
                         resolve(res.data)
                     }
@@ -91,10 +90,12 @@ const XHR=(name,jsondata,loadtype)=>{
                 })
                 .catch(err=>{
                     if(err.response){
-                        console.log(err.response);
+                        console.log(err.response)
                         if(err.response.status==403){//未登录
                             window.location.href='/user/auth';
                             return
+                        }else{
+                            reject({'message':err.response.data.message})
                         }
                     }else if(err.request){
                         console.log(err.request);

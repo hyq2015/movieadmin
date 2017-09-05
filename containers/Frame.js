@@ -91,7 +91,7 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="Ricky的杂货店"
+                    title="解忧杂货店"
                     style={{position:'fixed',top:0,left:0}}
                     iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
                     iconElementRight={<Toggle 

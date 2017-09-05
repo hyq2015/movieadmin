@@ -45,8 +45,8 @@ class Login extends Component{
     }
     render(){
         return(
-            <div className="login-page" style={{height:'calc(100vh - 64px)'}}>
-                <div className="login-bg"></div>
+            <div className= "login-page" style={{height:'calc(100vh - 64px)'}}>
+                <div className={this.props.blurbg ? "login-bg blur-login" : "login-bg"}></div>
                 <div className="loginform">
                     <div className="input-outer">
                         <input type="text" className="inputarea" onChange={(e)=>{this.changeVal(e,'name')}} placeholder="username"/>
@@ -58,7 +58,7 @@ class Login extends Component{
                         <input type="text" className="inputarea" placeholder="password" onChange={(e)=>{this.changeVal(e,'pwd')}}/>
                     </div>
                     <RaisedButton label="login" primary={true} style={{width:'100%',marginTop:50}} onClick={this.login} />
-                    <div className="logout" onClick={this.logOut}>退出</div>
+                    <div className="logout" onClick={this.logOut}>logout</div>
                 </div>
             </div>
         )
