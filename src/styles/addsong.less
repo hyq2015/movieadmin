@@ -1,0 +1,60 @@
+#addsongContainer{
+    height: 400px;
+    display: flex;
+    .add-area,.list-area{
+        flex: 1;
+        box-sizing: border-box;
+    }
+    .list-area{
+        padding-left: 20px;
+    }
+    .input-filed{
+        width: 100%;
+    }
+    .progress-circle{
+        text-align: center;
+        width: 60px;height: 60px;
+        line-height: 60px;
+    }
+    .progress-txt{
+        font-size: 14px;
+    }
+    .list-table{
+        text-align: left;
+        font-family: Roboto, sans-serif;
+        width: 100%;
+        thead{
+            position: relative;
+            width: 100%;
+            height: 40px;
+            tr{
+                th{
+                    padding: 0;
+                    border-bottom: 1px solid rgb(224, 224, 224);
+                }
+            }
+        }
+        th{
+            font-weight: normal;
+            color: rgb(158,158,158);
+            height: 40px;
+            padding: 0;
+            
+        }
+        .bodytr{
+            padding: 10px 0;
+            height: 48px;
+            overflow: visible;
+            td{
+                padding: 0;
+                border-bottom:1px solid rgb(224, 224, 224);
+            }
+        }
+        .song-name{
+            width: 60%;
+        }
+        .singer{
+            width: 25%;
+        }
+    }
+}

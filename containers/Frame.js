@@ -8,8 +8,8 @@ import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
-import PlusOne from 'material-ui/svg-icons/social/plus-one';
+import RemoveRedEye from 'material-ui/svg-icons/av/movie';
+import PlusOne from 'material-ui/svg-icons/av/videocam';
 import ContentLink from 'material-ui/svg-icons/content/link';
 import FingerPrint from 'material-ui/svg-icons/action/fingerprint';
 import Divider from 'material-ui/Divider';
@@ -17,6 +17,8 @@ import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import Download from 'material-ui/svg-icons/file/file-download';
 import Pantool from 'material-ui/svg-icons/action/lock';
 import Delete from 'material-ui/svg-icons/action/delete';
+import Music from 'material-ui/svg-icons/av/library-music';
+import Photo from 'material-ui/svg-icons/image/add-a-photo';
 import FontIcon from 'material-ui/FontIcon';
 import Toggle from 'material-ui/Toggle';
 
@@ -50,11 +52,18 @@ class Frame extends Component{
         this.toggle=this.toggle.bind(this)
     }
     componentDidMount(){
-        console.log(this.props)
+        this.props.getCurrentUser()
     }
     clickItem(link){
         
         this.props.history.push(link)
+    }
+    componentDidUpdate(){
+        if(this.props.musicPlaying){
+            this.refs.bgmusic.play()
+        }else if(!this.props.musicPlaying){
+            this.refs.bgmusic.pause()
+        }
     }
     toggle(e,checked){
         if(!checked){
@@ -62,6 +71,7 @@ class Frame extends Component{
         }else{
             this.refs.bgmusic.play()
         }
+        this.props.changePlayStatus(checked,true)
     }
     render(){
         const {activebar,tabshow,noticeTabbar}=this.props;
@@ -91,7 +101,7 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="解忧杂货店"
+                    title="解忧工作台"
                     style={{position:'fixed',top:0,left:0}}
                     iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
                     iconElementRight={<Toggle 
@@ -99,11 +109,11 @@ class Frame extends Component{
                         thumbSwitchedStyle={{backgroundColor:'#00c8fb'}}
                         labelStyle={{color:'#fff'}}
                         onToggle={this.toggle}
-                        defaultToggled={true}
+                        toggled={this.props.musicPlaying}
                     />}
                 />
                 <div>
-                    <audio src="http://ovhjj2x39.bkt.clouddn.com/jaychou_srz.mp3" autoPlay ref="bgmusic"></audio>
+                    <audio src={this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
                 </div>
                 <Paper style={style.paper}>
                     <Menu
@@ -112,6 +122,8 @@ class Frame extends Component{
                         <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/user/auth')} leftIcon={<Pantool />} />
                         <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
                         <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
+                        <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
+                        <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<Photo />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
                         {/* <Divider /> */}
                     </Menu>

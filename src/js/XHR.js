@@ -43,7 +43,22 @@ export const URL={
         'url':BASE_URL+'/api/user/logout',
         'method':'get'
     },
-    
+    'addSong':{
+        'url':BASE_URL+'/api/song/add',
+        'method':'post'
+    },
+    'songList':{
+        'url':BASE_URL+'/api/song/list',
+        'method':'get'
+    },
+    'userUpdate':{
+        'url':BASE_URL+'/api/user/update',
+        'method':'post'
+    },
+    'getUser':{
+        'url':BASE_URL+'/api/user/current',
+        'method':'get'
+    },
     getBannerIndexItem:{
         url:BASE_URL+'/api/app/index/getBannerIndexItem',
         method:'post'

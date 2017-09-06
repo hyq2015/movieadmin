@@ -1,5 +1,7 @@
 import types from '../src/js/actiontypes'
 import XHR from '../src/js/XHR'
+import * as addSongActions from '../actions/addSongActions'
+
 //请求数据
 export function noticeTabbar(activebar,hastabbar){
     return (dispatch, getState) => {
@@ -10,6 +12,22 @@ export function noticeTabbar(activebar,hastabbar){
                 tabshow:hastabbar
             }
         })
+    
+   }
+}
+
+export function changePlayStatus(checked,ifchangesingle){
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.CHANGE_PLAY_STATUS,
+            payLoad:{
+                status:checked
+            }
+        })
+        if(ifchangesingle){
+            dispatch(addSongActions.pausePlaySingle())
+        }
+        
     
    }
 }
@@ -60,3 +78,49 @@ export function hideSuccessToast(){
    }
 }
 
+export function changeMusicUrl(url,singlePlaystatus){
+    return (dispatch,getState)=>{
+        XHR('userUpdate',{bgmusic:url})
+        .then(res=>{
+            dispatch({
+                type:types.CHANGE_BG_MUSIC,
+                payLoad:{
+                    url:url,
+                    singleplay:singlePlaystatus
+                }
+            })
+            dispatch(showSuccessToast('操作成功',2000))
+        })
+        .catch(err=>{
+            dispatch(showModal(err.message));
+        })
+    }
+}
+
+export function changeMusicUrlWeb(url){
+    return (dispatch,getState)=>{
+        dispatch({
+            type:types.CHANGE_BG_MUSIC,
+            payLoad:{
+                url:url
+            }
+        })
+    }
+}
+
+export function getCurrentUser(){
+    return (dispatch,getState)=>{
+        XHR('getUser',{})
+        .then(res=>{
+            dispatch({
+                type:types.GET_USER_SUCCESS,
+                payLoad:{
+                    user:res.data
+                }
+            })
+        })
+        .catch(err=>{
+            dispatch(showModal(err.message));
+        })
+    }
+}

@@ -1,11 +1,11 @@
-module.exports=function(targetid,completeCallback,uploadProgressCallback){
+module.exports=function(targetid,completeCallback,uploadProgressCallback,token){
     let uploader = Qiniu.uploader({
         runtimes: 'html5,flash,html4',      // 上传模式，依次退化
         browse_button: targetid,         // 上传选择的点选按钮，必需
         // 在初始化时，uptoken，uptoken_url，uptoken_func三个参数中必须有一个被设置
         // 切如果提供了多个，其优先级为uptoken > uptoken_url > uptoken_func
         // 其中uptoken是直接提供上传凭证，uptoken_url是提供了获取上传凭证的地址，如果需要定制获取uptoken的过程则可以设置uptoken_func
-        uptoken : "A3JJR0Mk7IwivsYAbpF1JVAOQbNqE2kRV3GnfEBB:sDBFMljLaPPFBsqI94uHQeE7lwY=:eyJzY29wZSI6Imdyb2NlcnkiLCJkZWFkbGluZSI6MTUwNDA5MjEzMn0=", // uptoken是上传凭证，由其他程序生成
+        uptoken : token, // uptoken是上传凭证，由其他程序生成
         // uptoken_url: '/uptoken',         // Ajax请求uptoken的Url，强烈建议设置（服务端提供）
         // uptoken_func: function(){    // 在需要获取uptoken时，该方法会被调用
         //    // do something

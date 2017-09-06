@@ -28,10 +28,6 @@
         background-color: rgba(0, 0, 0, 0.5);
         padding: 10px;
         box-sizing: border-box;
-        animation: rotate 1s linear forwards;
-        &:hover{
-            animation: none;
-        }
         .input-outer{
             margin: 30px auto;
         }
@@ -58,23 +54,4 @@
         cursor: pointer;
     }
 }
-@keyframes rotate {
-    0%{
-        transform: translate(-200px,-150px);
-    }
-    20%{
-        transform: translate(-150px,0);
-    }
-    40%{
-        transform: translate(-100px,-100px);
-    }
-    60%{
-        transform: translate(-50px,0);
-    }
-    80%{
-        transform: translate(-20px,-50px);
-    }
-    100%{
-        transform: translate(0,0);
-    }
-}
+

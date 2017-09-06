@@ -6,6 +6,7 @@ import Play from '../containers/Play';
 import AddMovie from '../containers/AddMovie';
 import LearnRecord from '../containers/LearnRecord';
 import Login from '../containers/Login';
+import Addsong from '../containers/AddSong';
 // import Mine from '../containers/Mine';
 import {
   BrowserRouter as Router,
@@ -28,6 +29,7 @@ const Routes=()=>{
                     <Route path="/movie/list" component={Play}></Route>
                     <Route path="/movie/add" component={AddMovie}></Route>
                     <Route path="/learnrecord" component={LearnRecord}></Route>
+                    <Route path="/song/list" component={Addsong}></Route>
                 </Switch>
                 
             </Frame>

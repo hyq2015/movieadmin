@@ -4,7 +4,9 @@ const initialState={
     tabshow:true,
     open:false,
     successToastOpen:false,
-    errorTxt:''
+    errorTxt:'',
+    user:{},
+    musicPlaying:true,
 }
 export default function counter(state =initialState, action) {
     switch (action.type) {
@@ -37,7 +39,31 @@ export default function counter(state =initialState, action) {
                 ...state,
                 successToastOpen:false,
             }
+        case types.CHANGE_BG_MUSIC:
+            if(action.payLoad.url==state.user.bgmusic){
+                return{
+                    ...state,
+                }
+            }else{
+                return{
+                    ...state,
+                    user:{
+                        ...state.user,
+                        bgmusic:action.payLoad.url
+                    }
+                }
+            }
             
+        case types.GET_USER_SUCCESS:
+            return{
+                ...state,
+                user:action.payLoad.user
+            }
+        case types.CHANGE_PLAY_STATUS:
+            return{
+                ...state,
+                musicPlaying:action.payLoad.status
+            }
         default:
             return state
     }
