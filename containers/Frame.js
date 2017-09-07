@@ -26,6 +26,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import Loader from '../components/loader'
+
 import '../src/styles/app.less'
 import ActionToast from '../components/actionToast'
 
@@ -132,12 +134,18 @@ class Frame extends Component{
                         <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
                         <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
                         <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
+                        <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/album/list')} leftIcon={<Photo />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
                         {/* <Divider /> */}
                     </Menu>
                 </Paper>
                 <div className="frame">
-                    <section className="container-right">
+                        {this.props.pageLoaderShow ? 
+                            <div className="loader">
+                                <Loader></Loader>
+                            </div> : null
+                        }
+                    <section className="container-right" style={{display:this.props.pageLoaderShow && this.props.location.pathname!='/user/auth' ? 'none' : 'block'}}>
                         {this.props.children}
                     </section>
                     

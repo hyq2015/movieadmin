@@ -27,6 +27,7 @@ let pageSize=10;
     
     componentDidMount(){
         if(this.props.lists.data.length<1){
+            this.props.frame.changeLoaderStatus(true)
             this.props.play.fetchData({'pageNo':1,'pageSize':pageSize},this.props.history)
         }
         

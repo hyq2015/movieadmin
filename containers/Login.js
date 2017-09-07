@@ -15,10 +15,13 @@ class Login extends Component{
     constructor(props){
         super(props)
         this.state={
-            user:{}
+            user:{},
+            loginTxt:'register',
+            btnTxt:'login'
         }
         this.changeVal=this.changeVal.bind(this)
         this.login=this.login.bind(this)
+        this.register=this.register.bind(this)
         this.logOut=this.logOut.bind(this)
     }
     
@@ -39,11 +42,29 @@ class Login extends Component{
         if(!this.state.user.nickname || !this.state.user.mobile || !this.state.user.password){
             this.props.FrameActions.showModal('请完善信息')
         }else{
-            this.props.LoginActions.UserLogin(this.state.user)
+            if(this.state.btnTxt=='login'){
+                this.props.LoginActions.UserLogin(this.state.user)
+            }else{
+                this.props.LoginActions.UserSignin(this.state.user)
+            }
+            
         }
     }
     logOut(){
         this.props.LoginActions.UserLogout()
+    }
+    register(){
+        if(this.state.loginTxt=='login'){
+            this.setState({
+                loginTxt:'register',
+                btnTxt:'login',
+            })
+        }else{
+            this.setState({
+                loginTxt:'login',
+                btnTxt:'register'
+            })
+        }
     }
     render(){
         return(
@@ -61,8 +82,9 @@ class Login extends Component{
                     <div className="input-outer">
                         <input type="text" className="inputarea" placeholder="password" onChange={(e)=>{this.changeVal(e,'pwd')}}/>
                     </div>
-                    <RaisedButton label="login" primary={true} style={{width:'100%',marginTop:50}} onClick={this.login} />
+                    <RaisedButton label={this.state.btnTxt} primary={true} style={{width:'100%',marginTop:50}} onClick={this.login} />
                     <div className="logout" onClick={this.logOut}>logout</div>
+                    <div className="register" onClick={this.register}>{this.state.loginTxt}</div>
                 </div>
             </div>
         )

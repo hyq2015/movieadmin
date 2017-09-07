@@ -38,7 +38,7 @@ export const URL={
         'method':'get'
     },
     'userLogin':{
-        'url':BASE_URL+'/api/user/add',
+        'url':BASE_URL+'/api/user/login',
         'method':'post'
     },
     'userLogout':{
@@ -63,6 +63,14 @@ export const URL={
     },
     'addAlbum':{
         'url':BASE_URL+'/api/album/add',
+        'method':'post'
+    },
+    'getAlbumList':{
+        'url':BASE_URL+'/api/album/list',
+        'method':'get'
+    },
+    'userSignin':{
+        'url':BASE_URL+'/api/user/signin',
         'method':'post'
     },
     

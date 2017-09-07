@@ -7,6 +7,7 @@ const initialState={
     errorTxt:'',
     user:{},
     musicPlaying:true,
+    pageLoaderShow:false,
 }
 export default function counter(state =initialState, action) {
     switch (action.type) {
@@ -68,6 +69,11 @@ export default function counter(state =initialState, action) {
             return{
                 ...state,
                 musicPlaying:action.payLoad.status
+            }
+        case types.CHANGE_LOADER_STATUS:
+            return{
+                ...state,
+                pageLoaderShow:action.payLoad.status
             }
         default:
             return state

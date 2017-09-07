@@ -42,6 +42,7 @@ export function getSongList(jsondata,history){
                     songList:originData
                 }
             })
+            dispatch(frameActions.changeLoaderStatus(false))
         })
         .catch(err=>{
             dispatch(frameActions.showModal(err.message));

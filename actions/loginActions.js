@@ -42,3 +42,21 @@ export function UserLogout(){
     }
     
 }
+export function UserSignin(jsondata){
+    return (dispatch, getState) => {
+        XHR('userSignin',jsondata)
+            .then(res=>{
+                dispatch({
+                    type:types.USER_SIGNNIN,
+                    payLoad:{
+                        user:res.data
+                    }
+                })
+                dispatch(frameActions.showSuccessToast('注册成功',2000))
+                dispatch(frameActions.userStatusUpdate(res.data))
+                })
+            .catch(err=>{
+                dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
+            })
+        }
+}

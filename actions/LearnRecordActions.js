@@ -32,7 +32,7 @@ export function GetRecodList(jsondata,history){
               list:res
             }
         })
-        
+        dispatch(frameActions.changeLoaderStatus(false))
       })
     .catch(err=>{
       dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!

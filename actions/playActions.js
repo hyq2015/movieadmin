@@ -1,5 +1,7 @@
 import types from '../src/js/actiontypes'
 import XHR from '../src/js/XHR'
+import * as frameActions from '../actions/frameActions'
+
 import _ from 'lodash'
 //请求数据
 export function fetchData(jsondata,history){
@@ -12,6 +14,7 @@ export function fetchData(jsondata,history){
               lists:res
             }
         })
+        dispatch(frameActions.changeLoaderStatus(false))
       })
     .catch(err=>{
       console.log(err)

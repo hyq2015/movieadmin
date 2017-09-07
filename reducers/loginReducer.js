@@ -23,7 +23,13 @@ export default function play(state =initialState1, action) {
         blurbg:true,
         dataSaved:true
       }
-    
+    case types.USER_SIGNNIN:
+      return{
+        ...state,
+        user:action.payLoad.user,
+        blurbg:false,
+        dataSaved:true
+      }
     default:
       return state
   }

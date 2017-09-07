@@ -136,3 +136,14 @@ export function getCurrentUser(history){
         })
     }
 }
+
+export function changeLoaderStatus(status){
+    return(dispatch,getState)=>{
+        dispatch({
+            type:types.CHANGE_LOADER_STATUS,
+            payLoad:{
+                status:status
+            }
+        })
+    }
+}

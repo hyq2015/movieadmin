@@ -46,6 +46,7 @@ class LearnRecord extends Component{
     }
     componentDidMount(){
         if(this.props.list.length<1){
+            this.props.FrameActions.changeLoaderStatus(true)
             this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100},this.props.history)
         }
         
@@ -130,7 +131,6 @@ class LearnRecord extends Component{
                         <textarea onChange={this.templateContentChange} className="gen_area" placeholder="模板内容"></textarea>
                     </div>
                     <RaisedButton label="提交" onClick={this.submit} secondary={true} style={styles.button} />
-                
                 </div>
                 <div className="updatePart">
                     <div
@@ -178,7 +178,6 @@ class LearnRecord extends Component{
                     }
                     <RaisedButton label="提交修改" onClick={this.update} secondary={true} style={styles.button} />
                 </div>
-                
             </div>
         )
     }

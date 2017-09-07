@@ -1,6 +1,6 @@
 import types from '../src/js/actiontypes'
 const initialState1={
-    dataSaved:false,
+    dataLoaded:false,
     songList:[],
     currentPlayMusicUrl:'',
     currentMusicPlaying:false
@@ -15,7 +15,8 @@ export default function addsong(state=initialState1,action){
         case types.SONG_LIST:
             return{
                 ...state,
-                songList:action.payLoad.songList
+                songList:action.payLoad.songList,
+                dataLoaded:true
             }
         case types.CHANGE_SINGLE_PLAY_STATUS:
             if(state.currentPlayMusicUrl==action.payLoad.url){

@@ -52,8 +52,11 @@ class AddSong extends Component{
         .then(res=>{
             Uploader('pickfiles',this.previewUrl,this.uploadProgress,res.data.token)
         })
-       
-        this.props.addsongActions.getSongList({pageSize:1000,pageNo:1},this.props.history)
+       if(this.props.songList.length<1){
+           this.props.frameActions.changeLoaderStatus(true)
+           this.props.addsongActions.getSongList({pageSize:1000,pageNo:1},this.props.history)
+       }
+        
     }
     componentDidUpdate(){
         if(this.props.currentMusicPlaying){
@@ -109,6 +112,7 @@ class AddSong extends Component{
         this.props.addsongActions.pausePlaySingle()
     }
     render(){
+        
         return(
             <div id="addsongContainer">
                 <div className="add-area">

@@ -12,6 +12,7 @@
 body{
     padding: 0;margin: 0;
     overflow-x: hidden;
+    background-color: #fff;
 }
 .app-container{
     padding-top: 64px;
@@ -22,6 +23,15 @@ body{
     display: flex;
     height: 100%;
     overflow-x: hidden;
+    .loader{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        width: 400px;
+        height: 260px;
+        margin-left: -200px;
+        margin-top: -130px;
+    }
 }
 .leftPart{
     display: inline-block;
@@ -31,10 +41,5 @@ body{
 .container-right{
     display: inline-block;
     flex: 1;
-    background-color: #fff;
     overflow-y: scroll;
-    
-}
-.container{
-    background-color: #fff;
 }

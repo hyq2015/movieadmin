@@ -8,6 +8,7 @@ import LearnRecord from '../containers/LearnRecord';
 import Login from '../containers/Login';
 import Addsong from '../containers/AddSong';
 import Addalbum from '../containers/Addalbum';
+import AlbumList from '../containers/Albumlist';
 // import Mine from '../containers/Mine';
 import {
   BrowserRouter as Router,
@@ -32,6 +33,7 @@ const Routes=()=>{
                     <Route path="/learnrecord" component={LearnRecord}></Route>
                     <Route path="/song/list" component={Addsong}></Route>
                     <Route path="/album/add" component={Addalbum}></Route>
+                    <Route path="/album/list" component={AlbumList}></Route>
                 </Switch>
                 
             </Frame>
