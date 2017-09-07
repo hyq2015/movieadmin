@@ -10,10 +10,11 @@ export function UserLogin(jsondata){
                 dispatch({
                     type:types.USER_LOGIN,
                     payLoad:{
-                        user:res
+                        user:res.data
                     }
                 })
                 dispatch(frameActions.showSuccessToast('登录成功',2000))
+                dispatch(frameActions.userStatusUpdate(res.data))
                 })
             .catch(err=>{
                 dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
@@ -28,10 +29,11 @@ export function UserLogout(){
                 dispatch({
                     type:types.USER_LOGOUT,
                     payLoad:{
-                        user:res
+                        user:res.data
                     }
                 })
                 dispatch(frameActions.showSuccessToast('退出成功',2000))
+                dispatch(frameActions.userStatusUpdate(res.data))
             })
             .catch(err=>{
                 dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!

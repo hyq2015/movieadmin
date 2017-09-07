@@ -16,6 +16,18 @@ export function noticeTabbar(activebar,hastabbar){
    }
 }
 
+export function userStatusUpdate(user){
+    return (dispatch, getState) => {
+        dispatch({
+            type:types.USER_UPDATE_STATUS,
+            payLoad:{
+                user:user
+            }
+        })
+    
+   }
+}
+
 export function changePlayStatus(checked,ifchangesingle){
     return (dispatch, getState) => {
         dispatch({
@@ -108,9 +120,9 @@ export function changeMusicUrlWeb(url){
     }
 }
 
-export function getCurrentUser(){
+export function getCurrentUser(history){
     return (dispatch,getState)=>{
-        XHR('getUser',{})
+        XHR('getUser',{},history)
         .then(res=>{
             dispatch({
                 type:types.GET_USER_SUCCESS,

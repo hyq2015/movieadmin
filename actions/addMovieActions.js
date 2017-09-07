@@ -3,10 +3,10 @@ import XHR from '../src/js/XHR'
 import _ from 'lodash'
 import * as frameActions from '../actions/frameActions'
 
-export function Addmovie(jsondata){
+export function Addmovie(jsondata,history){
   console.log('发起请求')
     return (dispatch, getState) => {
-        XHR('addmovie',jsondata)
+        XHR('addmovie',jsondata,history)
         .then(res=>{
             dispatch({
                 type:types.ADD_MOVIE,
@@ -22,9 +22,9 @@ export function Addmovie(jsondata){
       }
 }
 
-export function getQiniuToken(){
+export function getQiniuToken(history){
   return (dispatch, getState) => {
-    XHR('getQiniuToken',{})
+    XHR('getQiniuToken',{},history)
     .then(res=>{
         dispatch({
             type:types.GET_QINIU_TOKEN,

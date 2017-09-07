@@ -24,12 +24,10 @@ let pageSize=10;
         this.goSearch=this.goSearch.bind(this)
         this.saveBannerSetting=this.saveBannerSetting.bind(this)
     }
-    componentWillMount(){
-        document.title='好电影'
-    }
+    
     componentDidMount(){
         if(this.props.lists.data.length<1){
-            this.props.play.fetchData({'pageNo':1,'pageSize':pageSize})
+            this.props.play.fetchData({'pageNo':1,'pageSize':pageSize},this.props.history)
         }
         
         // if(this.props.dataLoaded){

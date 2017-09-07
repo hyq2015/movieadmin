@@ -2,9 +2,9 @@ import types from '../src/js/actiontypes'
 import XHR from '../src/js/XHR'
 import _ from 'lodash'
 import * as frameActions from '../actions/frameActions'
-export function Addsong(jsondata){
+export function Addsong(jsondata,history){
     return(dispatch,getState)=>{
-        XHR('addSong',jsondata)
+        XHR('addSong',jsondata,history)
         .then(res=>{
             dispatch({
                 type:types.ADD_SONG,
@@ -20,9 +20,9 @@ export function Addsong(jsondata){
         })
     }
 }
-export function getSongList(jsondata){
+export function getSongList(jsondata,history){
     return(dispatch,getState)=>{
-        XHR('songList',jsondata)
+        XHR('songList',jsondata,history)
         .then(res=>{
             let originData=res.data;
             let currentPlayUrl=getState().get('addsong').currentPlayMusicUrl;

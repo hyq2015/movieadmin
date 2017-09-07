@@ -53,6 +53,11 @@ export default function counter(state =initialState, action) {
                     }
                 }
             }
+        case types.USER_UPDATE_STATUS:
+            return{
+                ...state,
+                user:action.payLoad.user
+            }
             
         case types.GET_USER_SUCCESS:
             return{

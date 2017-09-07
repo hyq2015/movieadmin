@@ -46,7 +46,7 @@ class LearnRecord extends Component{
     }
     componentDidMount(){
         if(this.props.list.length<1){
-            this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100})
+            this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100},this.props.history)
         }
         
     }
@@ -65,7 +65,7 @@ class LearnRecord extends Component{
             this.props.FrameActions.showModal('请完善信息之后再提交')
         }else{
             
-            this.props.LearnRecordActions.Addrecord({name:this.state.templateName,template:this.state.templateContent})
+            this.props.LearnRecordActions.Addrecord({name:this.state.templateName,template:this.state.templateContent},this.props.history)
         }
     }
     update(){
@@ -73,7 +73,7 @@ class LearnRecord extends Component{
         if(!this.state.currentTemplate){
             this.props.FrameActions.showModal('当前没有选择模板')
         }else{
-            this.props.LearnRecordActions.Updaterecord({id:this.state.currentUpdateTem._id,name:this.state.currentUpdateTem.name,template:this.state.currentUpdateTem.template})
+            this.props.LearnRecordActions.Updaterecord({id:this.state.currentUpdateTem._id,name:this.state.currentUpdateTem.name,template:this.state.currentUpdateTem.template},this.props.history)
         }
     }
     updateVal(e,val){

@@ -2,10 +2,38 @@
 <html>
   <head>
     <title>here you are</title>
+    <style>
+      body{
+        position: relative;
+      }
+      .canvaspage{
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+      canvas {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background:transparent;
+          cursor: pointer;
+          z-index: 10;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
+        
     </div>
+    <!-- <canvas height="500"></canvas> -->
     
     <!-- <script src="https://cdn.staticfile.org/plupload/3.1.0/plupload.min.js"></script> -->
     <script src="http://cdn.staticfile.org/plupload/2.1.2/moxie.js"></script>

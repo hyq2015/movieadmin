@@ -1,5 +1,7 @@
 import axios from 'axios'
 import 'babel-polyfill'
+import createHistory from 'history/createBrowserHistory'
+let history=createHistory();
 // const BASE_URL='http://192.168.31.204:8989'
 const BASE_URL=''
 export const URL={
@@ -59,13 +61,18 @@ export const URL={
         'url':BASE_URL+'/api/user/current',
         'method':'get'
     },
+    'addAlbum':{
+        'url':BASE_URL+'/api/album/add',
+        'method':'post'
+    },
+    
     getBannerIndexItem:{
         url:BASE_URL+'/api/app/index/getBannerIndexItem',
         method:'post'
     }
 
 }
-const XHR=(name,jsondata,loadtype)=>{
+const XHR=(name,jsondata,history)=>{
     if(URL[name]){
         if(URL[name].method=='post'){
             return new Promise((resolve, reject)=>{
@@ -80,7 +87,13 @@ const XHR=(name,jsondata,loadtype)=>{
                 .catch(err=>{
                     if(err.response){
                         if(err.response.status==403){//未登录
-                            window.location.href='/user/auth';
+                            // window.location.href='/user/auth';
+                            history.replace({
+                                pathname:'/user/auth'
+                            })
+                            // history.replace({
+                            //     pathname:'/user/auth'
+                            // })
                             return
                         }else{
                             reject({'message':err.response.data.message})
@@ -107,7 +120,13 @@ const XHR=(name,jsondata,loadtype)=>{
                     if(err.response){
                         console.log(err.response)
                         if(err.response.status==403){//未登录
-                            window.location.href='/user/auth';
+                            // window.location.href='/user/auth';
+                            history.replace({
+                                pathname:'/user/auth'
+                            })
+                            // history.replace({
+                            //     pathname:'/user/auth'
+                            // })
                             return
                         }else{
                             reject({'message':err.response.data.message})

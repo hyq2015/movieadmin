@@ -2,9 +2,9 @@ import types from '../src/js/actiontypes'
 import XHR from '../src/js/XHR'
 import _ from 'lodash'
 //请求数据
-export function fetchData(jsondata){
+export function fetchData(jsondata,history){
   return (dispatch, getState) => {
-    XHR('getMovieList',jsondata)
+    XHR('getMovieList',jsondata,history)
     .then(res=>{
         dispatch({
             type:types.FETCH_DATA_PLAY,

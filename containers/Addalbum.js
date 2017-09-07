@@ -1,7 +1,7 @@
 import React ,{Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as AddmovieActions from '../actions/addMovieActions'
+import * as AddalbumActions from '../actions/addAlbumActions'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import '../src/styles/addmovie.less'
@@ -12,18 +12,13 @@ import Uploader from '../src/js/uploader'
 import XHR from '../src/js/XHR'
 
 import PUBLIC from '../src/js/public'
-class AddMovie extends Component{
+class AddAlbum extends Component{
     constructor(props){
         super(props)
         this.state={
-            movie:{
-                name:'',
-                releaseTime:'',
-                imgurl:'',
-                score:'',
-                downloadurl:'',
-                desc:'',
-                tag:''
+            album:{
+                intro:'',
+                imgurl:''
             },
             previewImgUrl:'',
             uploadProgress:0,
@@ -32,6 +27,7 @@ class AddMovie extends Component{
         this.changeVal=this.changeVal.bind(this)
         this.previewImg=this.previewImg.bind(this)
         this.uploadProgress=this.uploadProgress.bind(this)
+        this.submit=this.submit.bind(this)
     }
     componentDidMount(){
         // this.props.addmovieActions.getQiniuToken();
@@ -45,23 +41,22 @@ class AddMovie extends Component{
         // uploader为一个plupload对象，继承了所有plupload的方法
     }
     previewImg(imgurl){
-        let oldMovie=this.state.movie;
-        oldMovie.imgurl='http://'+imgurl;
+        let oldAlbum=this.state.album;
+        oldAlbum.imgurl='http://'+imgurl;
         this.setState({
             previewImgUrl:'http://'+imgurl,
-            movie:oldMovie
+            album:oldAlbum
         })
     }
     changeVal(e,val,type){
-        let movie=this.state.movie;
-        for(let key in movie){
+        let album=this.state.album;
+        for(let key in album){
             if(key==type){
-                movie[key]=val
+                album[key]=val
             }
         }
-        console.log(movie)
         this.setState({
-            movie:movie
+            album:album
         })
     }
     uploadProgress(percent){
@@ -69,64 +64,48 @@ class AddMovie extends Component{
             uploadProgress:percent
         })
     }
-    
+    submit(){
+        let album=this.state.album;
+        for(let key in album){
+            if(album[key]=='' || !album[key]){
+                this.props.frameActions.showModal('缺少必填字段');
+                return
+            }
+        }
+        
+        this.props.addalbumActions.AddAlbum(_.clone(this.state.album),this.props.history)
+        album.imgurl='';
+        this.setState({
+            uploadProgress:0,
+            album:album
+        })
+    }
     render(){
         return(
             <div id="addmovieContainer">
                 <div>
                     <TextField
-                        hintText="电影名字"
+                        hintText="图片简介"
                         className="input-filed"
                         style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'name')}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        hintText="上映时间"
-                        className="input-filed"
-                        style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'releaseTime')}
+                        onChange={(e,val)=>this.changeVal(e,val,'intro')}
                     />
                 </div>
                 
                 <div>
                     <TextField
-                        hintText="豆瓣评分"
+                        hintText="图片地址"
                         className="input-filed"
                         style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'score')}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        hintText="影片标签"
-                        className="input-filed"
-                        style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'tag')}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        hintText="下载地址"
-                        className="input-filed"
-                        style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'downloadurl')}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        hintText="影片简介"
-                        className="input-filed"
-                        style={{width:'100%'}}
-                        onChange={(e,val)=>this.changeVal(e,val,'desc')}
+                        value={this.state.album.imgurl}
+                        onChange={(e,val)=>this.changeVal(e,val,'imgurl')}
                     />
                 </div>
                 <div>上传图片</div>
                 <div id="pickfiles">
-                <FloatingActionButton style={{margin:'20px 20px 20px 0'}}>
-                    <ContentAdd />
-                </FloatingActionButton>
+                    <FloatingActionButton style={{margin:'20px 20px 20px 0'}}>
+                        <ContentAdd />
+                    </FloatingActionButton>
                 </div>
                 <div style={{position:'relative',marginBottom:20}}>
                     {/* <CircularProgress
@@ -139,7 +118,7 @@ class AddMovie extends Component{
                     <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:this.state.previewImgUrl ? 'inline-block' : 'none'}}/>
                 </div>
                 
-                <RaisedButton label="提交" primary={true} onClick={()=>this.props.addmovieActions.Addmovie(this.state.movie,this.props.history)} style={{width:'100%'}} />
+                <RaisedButton label="提交" primary={true} onClick={this.submit} style={{width:'100%'}} />
             </div>
         )
     }
@@ -147,12 +126,12 @@ class AddMovie extends Component{
 
 //将state.counter绑定到props的counter
 function mapStateToProps(state) {
-    return state.get('addmovie')
+    return state.get('addalbum')
   }
   //将action的所有方法绑定到props上
   function mapDispatchToProps(dispatch) {
     return {
-        addmovieActions:bindActionCreators(AddmovieActions, dispatch)
+        addalbumActions:bindActionCreators(AddalbumActions, dispatch)
     }
   }
-  export default connect(mapStateToProps, mapDispatchToProps)(AddMovie)
+  export default connect(mapStateToProps, mapDispatchToProps)(AddAlbum)

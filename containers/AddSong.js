@@ -48,12 +48,12 @@ class AddSong extends Component{
     componentDidMount(){
         // this.props.addmovieActions.getQiniuToken();
         let _this=this;
-        XHR('getQiniuToken',{})
+        XHR('getQiniuToken',{},this.props.history)
         .then(res=>{
             Uploader('pickfiles',this.previewUrl,this.uploadProgress,res.data.token)
         })
        
-        this.props.addsongActions.getSongList({pageSize:1000,pageNo:1})
+        this.props.addsongActions.getSongList({pageSize:1000,pageNo:1},this.props.history)
     }
     componentDidUpdate(){
         if(this.props.currentMusicPlaying){
@@ -94,7 +94,7 @@ class AddSong extends Component{
             }
         }
         
-        this.props.addsongActions.Addsong(_.clone(this.state.song))
+        this.props.addsongActions.Addsong(_.clone(this.state.song),this.props.history)
         song.url='';
         this.setState({
             uploadProgress:0,

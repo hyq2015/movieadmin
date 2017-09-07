@@ -3,9 +3,9 @@ import XHR from '../src/js/XHR'
 import _ from 'lodash'
 import * as frameActions from '../actions/frameActions'
 
-export function Addrecord(jsondata){
+export function Addrecord(jsondata,history){
     return (dispatch, getState) => {
-        XHR('addcodeTemplate',jsondata)
+        XHR('addcodeTemplate',jsondata,history)
         .then(res=>{
             dispatch({
                 type:types.ADD_LEARN_RECORD,
@@ -22,9 +22,9 @@ export function Addrecord(jsondata){
       }
 }
 
-export function GetRecodList(jsondata){
+export function GetRecodList(jsondata,history){
   return (dispatch, getState) => {
-    XHR('getcodeTemplateList',jsondata)
+    XHR('getcodeTemplateList',jsondata,history)
     .then(res=>{
         dispatch({
             type:types.LEARN_RECORD_LIST,
@@ -40,9 +40,9 @@ export function GetRecodList(jsondata){
   }
 }
 
-export function Updaterecord(jsondata){
+export function Updaterecord(jsondata,history){
   return (dispatch, getState) => {
-    XHR('updateCodetemplate',jsondata)
+    XHR('updateCodetemplate',jsondata,history)
     .then(res=>{
         dispatch({
             type:types.UPDATE_LEARN_RECORD,

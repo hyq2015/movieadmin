@@ -33,8 +33,9 @@ import ActionToast from '../components/actionToast'
 const style = {
     paper: {
         display: 'inline-block',
-        float: 'left',
+        float:'left',
         margin: '16px 32px 16px 0',
+        backgroundColor:'transparent'
     },
     rightIcon: {
         textAlign: 'center',
@@ -52,18 +53,25 @@ class Frame extends Component{
         this.toggle=this.toggle.bind(this)
     }
     componentDidMount(){
-        this.props.getCurrentUser()
+        this.props.getCurrentUser(this.props.history)
     }
     clickItem(link){
-        
+        // if(link!='/user/auth'){
+        //     document.querySelector('canvas').style.display='none'
+        // }else{
+        //     document.querySelector('canvas').style.display='block'
+        // }
         this.props.history.push(link)
     }
     componentDidUpdate(){
-        if(this.props.musicPlaying){
-            this.refs.bgmusic.play()
-        }else if(!this.props.musicPlaying){
-            this.refs.bgmusic.pause()
+        if(this.props.user.bgmusic){
+            if(this.props.musicPlaying){
+                this.refs.bgmusic.play()
+            }else if(!this.props.musicPlaying){
+                this.refs.bgmusic.pause()
+            }
         }
+        
     }
     toggle(e,checked){
         if(!checked){
@@ -123,7 +131,7 @@ class Frame extends Component{
                         <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
                         <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
                         <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
-                        <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<Photo />} />
+                        <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
                         {/* <Divider /> */}
                     </Menu>

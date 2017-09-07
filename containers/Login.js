@@ -8,7 +8,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import Uploader from '../src/js/uploader'
-
+import  Man from '../components/man'
+// import  Robot from '../components/robot'
 import PUBLIC from '../src/js/public'
 class Login extends Component{
     constructor(props){
@@ -20,6 +21,7 @@ class Login extends Component{
         this.login=this.login.bind(this)
         this.logOut=this.logOut.bind(this)
     }
+    
     changeVal(e,type){
         let user=this.state.user;
         if(type=='name'){
@@ -46,6 +48,8 @@ class Login extends Component{
     render(){
         return(
             <div className= "login-page" style={{height:'calc(100vh - 64px)'}}>
+                
+                {new Man('ricky').sayName()}
                 <div className={this.props.blurbg ? "login-bg blur-login" : "login-bg"}></div>
                 <div className="loginform">
                     <div className="input-outer">
