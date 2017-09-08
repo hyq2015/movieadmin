@@ -59,7 +59,9 @@ export default function play(state =initialState1, action) {
         currentActiveCircle:action.payLoad.setting.currentActiveCircle,
         reverseCurrentActive:action.payLoad.setting.reverseCurrentActive
       }
-
+    case types.SWITCH_USER:
+    console.log('切换用户啦')
+      return initialState1
     default:
       return state
   }

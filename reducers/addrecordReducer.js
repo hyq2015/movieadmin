@@ -29,7 +29,8 @@ export default function play(state =initialState1, action) {
         ...state,
         template:action.payLoad.template.data,
       }
-      
+    case types.SWITCH_USER:
+      return initialState1
     default:
       return state
   }

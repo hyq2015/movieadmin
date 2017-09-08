@@ -40,6 +40,8 @@ export default function addsong(state=initialState1,action){
                 currentMusicPlaying:false,
                 songList:action.payLoad.songList
             }
+        case types.SWITCH_USER:
+            return initialState1
         default:
             return state
     }

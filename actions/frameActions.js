@@ -18,12 +18,20 @@ export function noticeTabbar(activebar,hastabbar){
 
 export function userStatusUpdate(user){
     return (dispatch, getState) => {
+        console.log(getState().get('frame').user.mobile)
+        console.log(user.mobile)
+        if(getState().get('frame').user.mobile!=user.mobile){//切换用户了,需要清除当前用户的state
+            dispatch({
+                type:types.SWITCH_USER
+            })
+        }
         dispatch({
             type:types.USER_UPDATE_STATUS,
             payLoad:{
                 user:user
             }
         })
+        
     
    }
 }

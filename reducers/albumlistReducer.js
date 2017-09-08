@@ -12,7 +12,8 @@ export default function getalbum(state=initialState1,action){
                 albumlist:action.payLoad.list,
                 dataLoaded:true
             }
-        
+        case types.SWITCH_USER:
+            return initialState1
         default:
             return state
     }

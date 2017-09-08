@@ -3,6 +3,6 @@ export default class Man{
         this.name=name;
     }
     sayName(){
-        console.log(this.name)
+        // console.log(this.name)
     }
 }

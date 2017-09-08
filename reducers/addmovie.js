@@ -26,7 +26,7 @@ export default function play(state =initialState1, action) {
         ...state,
         token:action.payLoad.token
       }
-      
+    
     default:
       return state
   }
