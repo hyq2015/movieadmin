@@ -20,11 +20,11 @@ var compiler = webpack(config)
 //     }
 // }))
 new WebpackDevServer(compiler, config.devServer)
-.listen(3000, '192.168.31.204', (err) => {
+.listen(port, '192.168.31.204', (err) => {
   if (err) {
     console.log(err);
   }
-  console.log('Listening at localhost:' + 3000);
+  console.log('Listening at localhost:' + port);
 });
 // app.use(webpackHotMiddleware(compiler))
 

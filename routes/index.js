@@ -9,6 +9,7 @@ import Login from '../containers/Login';
 import Addsong from '../containers/AddSong';
 import Addalbum from '../containers/Addalbum';
 import AlbumList from '../containers/Albumlist';
+import Autoplan from '../containers/Autoplan';
 // import Mine from '../containers/Mine';
 import {
   BrowserRouter as Router,
@@ -34,6 +35,7 @@ const Routes=()=>{
                     <Route path="/song/list" component={Addsong}></Route>
                     <Route path="/album/add" component={Addalbum}></Route>
                     <Route path="/album/list" component={AlbumList}></Route>
+                    <Route path="/autoplan" component={Autoplan}></Route>
                 </Switch>
                 
             </Frame>

@@ -19,6 +19,7 @@ import Pantool from 'material-ui/svg-icons/action/lock';
 import Delete from 'material-ui/svg-icons/action/delete';
 import Music from 'material-ui/svg-icons/av/library-music';
 import Photo from 'material-ui/svg-icons/image/add-a-photo';
+import Car from 'material-ui/svg-icons/maps/directions-car';
 import FontIcon from 'material-ui/FontIcon';
 import Toggle from 'material-ui/Toggle';
 
@@ -111,7 +112,7 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="解忧工作台"
+                    title="梦想工作台"
                     style={{position:'fixed',top:0,left:0}}
                     iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
                     iconElementRight={<Toggle 
@@ -136,6 +137,7 @@ class Frame extends Component{
                         <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
                         <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/album/list')} leftIcon={<Photo />} />
                         <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
+                        <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />
                         {/* <Divider /> */}
                     </Menu>
                 </Paper>

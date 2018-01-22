@@ -10,7 +10,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import CircularProgress from 'material-ui/CircularProgress';
 import Uploader from '../src/js/uploader'
 import XHR from '../src/js/XHR'
-
 import PUBLIC from '../src/js/public'
 class AddAlbum extends Component{
     constructor(props){
@@ -36,7 +35,7 @@ class AddAlbum extends Component{
         .then(res=>{
             Uploader('pickfiles',this.previewImg,this.uploadProgress,res.data.token)
         })
-        
+       
         // domain为七牛空间对应的域名，选择某个空间后，可通过 空间设置->基本设置->域名设置 查看获取
         // uploader为一个plupload对象，继承了所有plupload的方法
     }

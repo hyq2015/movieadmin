@@ -11,7 +11,7 @@ import FontIcon from 'material-ui/FontIcon';
 import Slider from 'material-ui/Slider';
 import TextField from 'material-ui/TextField';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-
+import CircularProgress from 'material-ui/CircularProgress';
 const styles = {
     block: {
         maxWidth: 250,
@@ -31,7 +31,8 @@ class LearnRecord extends Component{
             templateName:'',
             templateContent:'',
             currentTemplate:'',
-            currentUpdateTem:''
+            currentUpdateTem:'',
+            notShowloader:true
         }
         this.changeVal=this.changeVal.bind(this);
         this.submit=this.submit.bind(this);
@@ -49,6 +50,20 @@ class LearnRecord extends Component{
             this.props.FrameActions.changeLoaderStatus(true)
             this.props.LearnRecordActions.GetRecodList({pageNo:1,pageSize:100},this.props.history)
         }
+        setTimeout(()=>{
+            let RecordList=document.querySelector('.record-list');
+            let RealrecordList=document.querySelector('.real-record_list');
+    
+            RecordList.addEventListener('scroll',()=>{
+                if(RecordList.scrollTop+500>=RealrecordList.offsetHeight){
+                    if(this.state.notShowloader){
+                        this.setState({
+                            notShowloader:false
+                        })
+                    }
+                }
+            })
+        },1000)
         
     }
     changeVal(e,value){
@@ -159,23 +174,33 @@ class LearnRecord extends Component{
                     <div>
                         <textarea onChange={this.templateContentUpdate}  className="gen_area" placeholder="模板内容" value={this.state.currentUpdateTem.template}></textarea>
                     </div>
-                    {this.props.list.length>0 ? 
-                        <RadioButtonGroup
-                            onChange={this.changeRadio}
-                            name="recordradio"
-                        >
-                            {this.props.list.map((item,index)=>
-                                <RadioButton
-                                    key={index}
-                                    value={item._id}
-                                    label={item.name}
-                                    style={styles.radioButton}
-                                    data-index={index}
-                                />
-                            )}
+                    <div className="record-list">
+                        {this.props.list.length>0 ? 
+                            <RadioButtonGroup
+                                onChange={this.changeRadio}
+                                name="recordradio"
+                                className="real-record_list"
+                            >
+                                {this.props.list.map((item,index)=>
+                                    <RadioButton
+                                        key={index}
+                                        value={item._id}
+                                        label={item.name}
+                                        style={styles.radioButton}
+                                        data-index={index}
+                                    />
+                                )}
+                            
+                            </RadioButtonGroup> : null
+                        }
+                        {this.state.notShowloader ? 
+                            <div style={{height:40,textAlign:'center'}}>滚动加载更多</div> : 
+                            <CircularProgress />
+
+                        }
                         
-                        </RadioButtonGroup> : null
-                    }
+                    </div>
+                    
                     <RaisedButton label="提交修改" onClick={this.update} secondary={true} style={styles.button} />
                 </div>
             </div>

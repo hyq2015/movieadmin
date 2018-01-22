@@ -9,6 +9,7 @@ import login from './loginReducer'
 import addsong from './addsongReducer'
 import addalbum from './addalbumReducer'
 import albumlist from './albumlistReducer'
+import autoplan from './autoplanReducer'
 import {routerReducer } from 'react-router-redux';
 //使用redux的combineReducers方法将所有reducer打包起来
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   addsong,
   addalbum,
   albumlist,
+  autoplan,
   router: routerReducer
 })
 // const rootReducer = combineReducers({counter:counter,play:play,routing:routerReducer})
