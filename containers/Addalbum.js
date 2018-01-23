@@ -114,7 +114,9 @@ class AddAlbum extends Component{
                         thickness={5}
                         style={{position:'absolute',top:10,left:10,zIndex:100,display:this.state.uploadProgress>0 ? 'inline-block' : 'none'}}
                     /> */}
-                    <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:this.state.previewImgUrl ? 'inline-block' : 'none'}}/>
+                    {this.state.previewImgUrl ?
+                        <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:'inline-block'}}/> : null
+                    }
                 </div>
                 
                 <RaisedButton label="提交" primary={true} onClick={this.submit} style={{width:'100%'}} />
