@@ -23,9 +23,11 @@ const middleware = routerMiddleware(history)
 const middlewares=[
   thunk,
   promiseMiddleware,
-  logger,
   middleware
 ];
+if (process.env.NODE_ENV !== `production`) {
+    middlewares.push(logger);
+}
 const createStoreWithMiddleware = compose(
     applyMiddleware(...middlewares)
     // DevTools.instrument()

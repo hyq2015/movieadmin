@@ -3,7 +3,7 @@ import XHR from '../src/js/XHR'
 import _ from 'lodash'
 import * as frameActions from '../actions/frameActions'
 
-export function UserLogin(jsondata){
+export function UserLogin(jsondata,history){
     return (dispatch, getState) => {
         XHR('userLogin',jsondata)
             .then(res=>{
@@ -15,6 +15,9 @@ export function UserLogin(jsondata){
                 })
                 dispatch(frameActions.showSuccessToast('登录成功',2000))
                 dispatch(frameActions.userStatusUpdate(res.data))
+                history.push({
+                    pathname:'/movie/list'
+                })
                 })
             .catch(err=>{
                 dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!

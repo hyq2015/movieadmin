@@ -56,6 +56,7 @@ class Frame extends Component{
         this.toggle=this.toggle.bind(this)
     }
     componentDidMount(){
+        console.log('进入app')
         this.props.getCurrentUser(this.props.history)
     }
     clickItem(link){
@@ -64,7 +65,10 @@ class Frame extends Component{
         // }else{
         //     document.querySelector('canvas').style.display='block'
         // }
-        this.props.history.push(link)
+        if(this.props.user && this.props.user._id){
+            this.props.history.push(link)
+        }
+        // this.props.history.push(link)
     }
     componentDidUpdate(){
         if(this.props.user.bgmusic){

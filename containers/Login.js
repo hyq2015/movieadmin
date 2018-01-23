@@ -43,9 +43,9 @@ class Login extends Component{
             this.props.FrameActions.showModal('请完善信息')
         }else{
             if(this.state.btnTxt=='login'){
-                this.props.LoginActions.UserLogin(this.state.user)
+                this.props.LoginActions.UserLogin(this.state.user,this.props.history)
             }else{
-                this.props.LoginActions.UserSignin(this.state.user)
+                this.props.LoginActions.UserSignin(this.state.user,this.props.history)
             }
             
         }
