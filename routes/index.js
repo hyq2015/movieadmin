@@ -38,7 +38,7 @@ const Routes=()=>{
                     <Route path="/album/add" component={Addalbum}></Route>
                     <Route path="/album/list" component={AlbumList}></Route>
                     <Route path="/autoplan" component={Autoplan}></Route>
-                    <Route path="/baiyue/statistic" component={BaiYue}></Route>
+                    <Route path="/baiyue" component={BaiYue}></Route>
                 </Switch>
                 
             </Frame>
