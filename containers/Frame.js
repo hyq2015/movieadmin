@@ -130,21 +130,24 @@ class Frame extends Component{
                 <div>
                     <audio src={this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
                 </div>
-                <Paper style={style.paper}>
-                    <Menu
-                        selectedMenuItemStyle={{color:'#00c8fb'}}
-                    >
-                        <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/user/auth')} leftIcon={<Pantool />} />
-                        <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
-                        <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
-                        <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
-                        <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
-                        <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/album/list')} leftIcon={<Photo />} />
-                        <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
-                        <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />
-                        {/* <Divider /> */}
-                    </Menu>
-                </Paper>
+                {this.props.showMenu ?
+                    <Paper style={style.paper}>
+                        <Menu
+                            selectedMenuItemStyle={{color:'#00c8fb'}}
+                        >
+                            <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/user/auth')} leftIcon={<Pantool />} />
+                            <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
+                            <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
+                            <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
+                            <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/album/list')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
+                            <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />
+                            {/* <Divider /> */}
+                        </Menu>
+                    </Paper> : null
+                }
+
                 <div className="frame">
                         {this.props.pageLoaderShow ? 
                             <div className="loader">

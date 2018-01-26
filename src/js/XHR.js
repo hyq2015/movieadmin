@@ -77,6 +77,10 @@ export const URL={
     getBannerIndexItem:{
         url:BASE_URL+'/api/app/index/getBannerIndexItem',
         method:'post'
+    },
+    'addStatistic':{
+        'url':BASE_URL+'/api/baiyue/statistic',
+        'method':'post'
     }
 
 }

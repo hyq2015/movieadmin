@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux-immutable'
+import {combineReducers} from 'redux-immutable'
 // import welfare from './counterRecucer'
 import play from './playReducer'
 import frame from './frameReducer'
@@ -10,19 +10,23 @@ import addsong from './addsongReducer'
 import addalbum from './addalbumReducer'
 import albumlist from './albumlistReducer'
 import autoplan from './autoplanReducer'
-import {routerReducer } from 'react-router-redux';
+import statistic from './addStatisticReducer'
+import {routerReducer} from 'react-router-redux';
 //使用redux的combineReducers方法将所有reducer打包起来
 const rootReducer = combineReducers({
-  play,
-  frame,
-  addmovie,
-  addrecord,
-  login,
-  addsong,
-  addalbum,
-  albumlist,
-  autoplan,
-  router: routerReducer
+    play,
+    frame,
+    addmovie,
+    addrecord,
+    login,
+    addsong,
+    addalbum,
+    albumlist,
+    autoplan,
+    statistic,
+    router
+:
+routerReducer
 })
 // const rootReducer = combineReducers({counter:counter,play:play,routing:routerReducer})
 

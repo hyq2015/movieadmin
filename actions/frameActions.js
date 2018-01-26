@@ -155,3 +155,14 @@ export function changeLoaderStatus(status){
         })
     }
 }
+
+export function changeMenuStatus(status){
+    return(dispatch,getState)=>{
+        dispatch({
+            type:types.CHANGE_MENU_STATUS,
+            payLoad:{
+                status:status
+            }
+        })
+    }
+}

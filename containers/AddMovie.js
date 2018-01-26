@@ -2,6 +2,8 @@ import React ,{Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AddmovieActions from '../actions/addMovieActions'
+import * as frameActions from '../actions/frameActions'
+
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import '../src/styles/addmovie.less'
@@ -25,6 +27,11 @@ class AddMovie extends Component{
                 desc:'',
                 tag:''
             },
+            statistic:{
+                name:'',
+                phone:'',
+                roomNumber:''
+            },
             previewImgUrl:'',
             uploadProgress:0,
         }
@@ -40,7 +47,7 @@ class AddMovie extends Component{
         .then(res=>{
             Uploader('pickfiles',this.previewImg,this.uploadProgress,res.data.token)
         })
-       
+
         // domain为七牛空间对应的域名，选择某个空间后，可通过 空间设置->基本设置->域名设置 查看获取
         // uploader为一个plupload对象，继承了所有plupload的方法
     }
@@ -59,7 +66,6 @@ class AddMovie extends Component{
                 movie[key]=val
             }
         }
-        console.log(movie)
         this.setState({
             movie:movie
         })
@@ -69,7 +75,6 @@ class AddMovie extends Component{
             uploadProgress:percent
         })
     }
-    
     render(){
         return(
             <div id="addmovieContainer">
@@ -152,7 +157,8 @@ function mapStateToProps(state) {
   //将action的所有方法绑定到props上
   function mapDispatchToProps(dispatch) {
     return {
-        addmovieActions:bindActionCreators(AddmovieActions, dispatch)
+        addmovieActions:bindActionCreators(AddmovieActions, dispatch),
+        frameActions:bindActionCreators(frameActions, dispatch)
     }
   }
   export default connect(mapStateToProps, mapDispatchToProps)(AddMovie)
