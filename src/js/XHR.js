@@ -6,80 +6,80 @@ let history=createHistory();
 const BASE_URL=''
 export const URL={
     'saveAddress':{
-        'url':BASE_URL+'/api/user/saveshippingaddr',
+        'url':BASE_URL+'/user/saveshippingaddr',
         'method':'post'
     },
     'mallInfo':{
-        'url':BASE_URL+'/api/app/index/mall/query',
+        'url':BASE_URL+'/app/index/mall/query',
         'method':'post'
     },
     'getMovieList':{
-        'url':BASE_URL+'/api/movie/list',
+        'url':BASE_URL+'/movie/list',
         'method':'get'
     },
     'addmovie':{
-        'url':BASE_URL+'/api/movie/add',
+        'url':BASE_URL+'/movie/add',
         'method':'post'
     },
     'addcodeTemplate':{
-        'url':BASE_URL+'/api/codetemplate/add',
+        'url':BASE_URL+'/codetemplate/add',
         'method':'post'
     },
     'updateCodetemplate':{
-        'url':BASE_URL+'/api/codetemplate/update',
+        'url':BASE_URL+'/codetemplate/update',
         'method':'post'
     },
     'getcodeTemplateList':{
-        'url':BASE_URL+'/api/codetemplate/list',
+        'url':BASE_URL+'/codetemplate/list',
         'method':'get'
     },
     'getQiniuToken':{
-        'url':BASE_URL+'/api/uptoken',
+        'url':BASE_URL+'/uptoken',
         'method':'get'
     },
     'userLogin':{
-        'url':BASE_URL+'/api/user/login',
+        'url':BASE_URL+'/user/login',
         'method':'post'
     },
     'userLogout':{
-        'url':BASE_URL+'/api/user/logout',
+        'url':BASE_URL+'/user/logout',
         'method':'get'
     },
     'addSong':{
-        'url':BASE_URL+'/api/song/add',
+        'url':BASE_URL+'/song/add',
         'method':'post'
     },
     'songList':{
-        'url':BASE_URL+'/api/song/list',
+        'url':BASE_URL+'/song/list',
         'method':'get'
     },
     'userUpdate':{
-        'url':BASE_URL+'/api/user/update',
+        'url':BASE_URL+'/user/update',
         'method':'post'
     },
     'getUser':{
-        'url':BASE_URL+'/api/user/current',
+        'url':BASE_URL+'/user/current',
         'method':'get'
     },
     'addAlbum':{
-        'url':BASE_URL+'/api/album/add',
+        'url':BASE_URL+'/album/add',
         'method':'post'
     },
     'getAlbumList':{
-        'url':BASE_URL+'/api/album/list',
+        'url':BASE_URL+'/album/list',
         'method':'get'
     },
     'userSignin':{
-        'url':BASE_URL+'/api/user/signin',
+        'url':BASE_URL+'/user/signin',
         'method':'post'
     },
     
     getBannerIndexItem:{
-        url:BASE_URL+'/api/app/index/getBannerIndexItem',
+        url:BASE_URL+'/app/index/getBannerIndexItem',
         method:'post'
     },
     'addStatistic':{
-        'url':BASE_URL+'/api/statistic',
+        'url':BASE_URL+'/statistic',
         'method':'post'
     }
 
