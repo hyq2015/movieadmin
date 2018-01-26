@@ -79,7 +79,7 @@ export const URL={
         method:'post'
     },
     'addStatistic':{
-        'url':BASE_URL+'/api/baiyue/statistic',
+        'url':BASE_URL+'/api/statistic',
         'method':'post'
     }
 
