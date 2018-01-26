@@ -71,7 +71,7 @@ class Frame extends Component{
         // this.props.history.push(link)
     }
     componentDidUpdate(){
-        if(this.props.user.bgmusic){
+        if(this.props.user && this.props.user.bgmusic){
             if(this.props.musicPlaying){
                 this.refs.bgmusic.play()
             }else if(!this.props.musicPlaying){
@@ -128,7 +128,7 @@ class Frame extends Component{
                     />}
                 />
                 <div>
-                    <audio src={this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
+                    <audio src={this.props.user && this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
                 </div>
                 {this.props.showMenu ?
                     <Paper style={style.paper}>

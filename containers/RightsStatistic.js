@@ -39,9 +39,9 @@ class AddStatistic extends Component{
         let data=this.state.statistic;
         if(!data.name || !data.phone || !data.roomNumber){
             this.props.frameActions.showSuccessToast('请完善信息', 2000);
-            return
+        }else{
+            this.props.addStatisticActions.AddStatistic(this.state.statistic,this.props.history)
         }
-        // this.props.addStatisticActions.AddStatistic(this.state.statistic,this.props.history)
     }
     render(){
         return(
