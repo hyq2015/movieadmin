@@ -71,6 +71,7 @@ class AddStatistic extends Component{
                     />
                 </div>
                 <RaisedButton label="提交" primary={true} onClick={this.submitData} style={{width:'100%'}} />
+                <div style={{width:'100%',position:'fixed',textAlign:'center',bottom:50,left:0,color:'#b2b2b2'}}>&copy;Ricky提供技术支持</div>
             </div>
         )
     }
