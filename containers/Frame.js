@@ -57,6 +57,7 @@ class Frame extends Component{
     }
     componentDidMount(){
         console.log('进入app')
+        console.log(this.props.history)
         if(this.props.history.location.pathname.indexOf('baiyue')==-1){
             this.props.getCurrentUser(this.props.history)
         }
