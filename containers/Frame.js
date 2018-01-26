@@ -57,7 +57,10 @@ class Frame extends Component{
     }
     componentDidMount(){
         console.log('进入app')
-        this.props.getCurrentUser(this.props.history)
+        if(this.props.history.location.pathname.indexOf('baiyue')==-1){
+            this.props.getCurrentUser(this.props.history)
+        }
+
     }
     clickItem(link){
         // if(link!='/user/auth'){
