@@ -21,12 +21,17 @@ class AddAlbum extends Component{
             },
             previewImgUrl:'',
             uploadProgress:0,
-        }
+            dog:{
+                intro:'',
+                type:''
+            }
+        };
         
         this.changeVal=this.changeVal.bind(this)
         this.previewImg=this.previewImg.bind(this)
         this.uploadProgress=this.uploadProgress.bind(this)
         this.submit=this.submit.bind(this)
+        this.addDog=this.addDog.bind(this)
     }
     componentDidMount(){
         // this.props.addmovieActions.getQiniuToken();
@@ -79,6 +84,24 @@ class AddAlbum extends Component{
             album:album
         })
     }
+    changeDogValue(e,val,type){
+        let dog=this.state.dog;
+        dog[type]=val;
+        this.setState({
+            dog:dog
+        });
+    }
+    addDog(){
+        let dog=this.state.dog;
+        for(let key in dog){
+            if(dog[key]=='' || !dog[key]){
+                this.props.frameActions.showModal('缺少必填字段');
+                return
+            }
+        }
+
+        this.props.addalbumActions.AddDog(_.clone(this.state.dog),this.props.history)
+    }
     render(){
         return(
             <div id="addalbumContainer">
@@ -120,7 +143,27 @@ class AddAlbum extends Component{
                 </div>
                 
                 <RaisedButton label="提交" primary={true} onClick={this.submit} style={{width:'100%'}} />
-                
+
+                <div>
+                    <TextField
+                        hintText="狗狗名字"
+                        className="input-filed"
+                        style={{width:'100%'}}
+                        value={this.state.dog.intro}
+                        onChange={(e,val)=>this.changeDogValue(e,val,'intro')}
+                    />
+                </div>
+
+                <div>
+                    <TextField
+                        hintText="狗狗毛色"
+                        className="input-filed"
+                        style={{width:'100%'}}
+                        value={this.state.dog.type}
+                        onChange={(e,val)=>this.changeDogValue(e,val,'type')}
+                    />
+                </div>
+                <RaisedButton label="提交" primary={true} onClick={this.addDog} style={{width:'100%'}} />
             </div>
         )
     }

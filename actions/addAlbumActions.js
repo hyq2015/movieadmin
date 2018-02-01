@@ -19,3 +19,20 @@ export function AddAlbum(jsondata,history){
         })
     }
 }
+export function AddDog(jsondata,history){
+    return(dispatch,getState)=>{
+        XHR('addDog',jsondata,history)
+            .then(res=>{
+                dispatch({
+                    type:types.ADD_DOG,
+                    payLoad:{
+                        dog:res.data
+                    }
+                })
+                dispatch(frameActions.showSuccessToast('操作成功',2000))
+            })
+            .catch(err=>{
+                dispatch(frameActions.showModal(err.message));
+            })
+    }
+}

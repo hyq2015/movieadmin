@@ -3,7 +3,7 @@ import 'babel-polyfill'
 import createHistory from 'history/createBrowserHistory'
 let history=createHistory();
 // const BASE_URL='http://192.168.31.204:8989'
-const BASE_URL=''
+const BASE_URL='/api'
 export const URL={
     'saveAddress':{
         'url':BASE_URL+'/user/saveshippingaddr',
@@ -73,13 +73,16 @@ export const URL={
         'url':BASE_URL+'/user/signin',
         'method':'post'
     },
-    
+    'addDog':{
+        'url':BASE_URL+'/dog/add',
+        'method':'post'
+    },
     getBannerIndexItem:{
         url:BASE_URL+'/app/index/getBannerIndexItem',
         method:'post'
     },
     'addStatistic':{
-        'url':BASE_URL+'/statistic',
+        'url':'/statistic',
         'method':'post'
     }
 
