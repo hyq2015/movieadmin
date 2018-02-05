@@ -77,6 +77,14 @@ export const URL={
         'url':BASE_URL+'/dog/add',
         'method':'post'
     },
+    'removeDog':{
+        'url':BASE_URL+'/dog/remove',
+        'method':'post'
+    },
+    'updateDog':{
+        'url':BASE_URL+'/dog/update',
+        'method':'post'
+    },
     getBannerIndexItem:{
         url:BASE_URL+'/app/index/getBannerIndexItem',
         method:'post'

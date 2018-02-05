@@ -32,6 +32,8 @@ class AddAlbum extends Component{
         this.uploadProgress=this.uploadProgress.bind(this)
         this.submit=this.submit.bind(this)
         this.addDog=this.addDog.bind(this)
+        this.removeDog=this.removeDog.bind(this)
+        this.updateDog=this.updateDog.bind(this)
     }
     componentDidMount(){
         // this.props.addmovieActions.getQiniuToken();
@@ -91,6 +93,9 @@ class AddAlbum extends Component{
             dog:dog
         });
     }
+    removeDog(){
+        this.props.addalbumActions.removeDog({id:'5a72e2bee1d02258e0215dcc'},this.props.history)
+    }
     addDog(){
         let dog=this.state.dog;
         for(let key in dog){
@@ -101,6 +106,9 @@ class AddAlbum extends Component{
         }
 
         this.props.addalbumActions.AddDog(_.clone(this.state.dog),this.props.history)
+    }
+    updateDog(){
+        this.props.addalbumActions.updateDog({id:'5a73e32e1e519e262c5c3f1b',type:'black',intro:'拉拉'},this.props.history)
     }
     render(){
         return(
@@ -164,6 +172,8 @@ class AddAlbum extends Component{
                     />
                 </div>
                 <RaisedButton label="提交" primary={true} onClick={this.addDog} style={{width:'100%'}} />
+                <RaisedButton label="删除狗狗" primary={true} onClick={this.removeDog} style={{width:'100%',marginTop:20}} />
+                <RaisedButton label="更新狗狗" primary={true} onClick={this.updateDog} style={{width:'100%',marginTop:20}} />
             </div>
         )
     }

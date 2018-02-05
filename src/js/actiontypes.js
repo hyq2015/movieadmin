@@ -67,6 +67,8 @@ const types = {
      */
     ADD_ALBUM: 'ADD_ALBUM',
     GET_ALBUM_LIST: 'GET_ALBUM_LIST',
-    ADD_DOG: 'ADD_DOG'
+    ADD_DOG: 'ADD_DOG',
+    REMOVE_DOG: 'REMOVE_DOG',
+    UPDATE_DOG: 'UPDATE_DOG'
 };
 export default types

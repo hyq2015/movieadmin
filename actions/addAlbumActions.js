@@ -36,3 +36,38 @@ export function AddDog(jsondata,history){
             })
     }
 }
+export function removeDog(jsondata,history){
+    return(dispatch,getState)=>{
+        XHR('removeDog',jsondata,history)
+            .then(res=>{
+                dispatch({
+                    type:types.REMOVE_DOG,
+                    payLoad:{
+                        dog:res.data
+                    }
+                })
+                dispatch(frameActions.showSuccessToast('操作成功',2000))
+            })
+            .catch(err=>{
+                dispatch(frameActions.showModal(err.message));
+            })
+    }
+}
+export function updateDog(jsondata,history){
+    return(dispatch,getState)=>{
+        XHR('updateDog',jsondata,history)
+            .then(res=>{
+                dispatch({
+                    type:types.UPDATE_DOG,
+                    payLoad:{
+                        dog:res.data
+                    }
+                })
+                dispatch(frameActions.showSuccessToast('操作成功',2000))
+            })
+            .catch(err=>{
+                dispatch(frameActions.showModal(err.message));
+            })
+    }
+}
+
