@@ -8,8 +8,13 @@ import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import RemoveRedEye from 'material-ui/svg-icons/av/movie';
+import Pantool from 'material-ui/svg-icons/action/lock';
+import Music from 'material-ui/svg-icons/av/library-music';
+import Photo from 'material-ui/svg-icons/image/add-a-photo';
 import PlusOne from 'material-ui/svg-icons/av/videocam';
 import Car from 'material-ui/svg-icons/maps/directions-car';
+import FingerPrint from 'material-ui/svg-icons/action/fingerprint';
 import Toggle from 'material-ui/Toggle';
 
 import Dialog from 'material-ui/Dialog';
@@ -112,7 +117,7 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="入住易"
+                    title="梦想工作台"
                     style={{position:'fixed',top:0,left:0}}
                     iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
                     iconElementRight={
@@ -122,7 +127,6 @@ class Frame extends Component{
                 <div>
                     <audio src={this.props.user && this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
                 </div>
-                {/*{this.props.showMenu ?*/}
                     <Paper style={style.paper}>
                         <Menu
                             selectedMenuItemStyle={{color:'#00c8fb'}}
@@ -139,8 +143,6 @@ class Frame extends Component{
                             {/* <Divider /> */}
                         </Menu>
                     </Paper>
-                    // : null
-                // }
 
                 <div className="frame">
                         {this.props.pageLoaderShow ? 
