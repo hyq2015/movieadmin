@@ -52,9 +52,7 @@ class Frame extends Component{
         console.log('进入app')
         console.log(this.props.history)
         this.props.changeMenuStatus(false)
-        if(this.props.history.location.pathname.indexOf('baiyue')==-1){
-            this.props.getCurrentUser(this.props.history)
-        }
+        this.props.getCurrentUser(this.props.history)
 
     }
     clickItem(link){
