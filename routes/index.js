@@ -28,7 +28,7 @@ const Routes=()=>{
         // <Router history={browserHistory}>
             <Frame>
                 <Switch>
-                    {/*<Route path="/portal" exact component={Login}/>*/}
+                    <Route path="/dev/portal" exact component={Play}/>
                     {/*<Route path="/" exact component={BaiYue}/>*/}
                     <Route path="/portal/user/auth" exact component={Login}/>
                     <Route path="/portal/movie/list" component={Play}></Route>
