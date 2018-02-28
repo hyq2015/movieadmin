@@ -129,14 +129,14 @@ class Frame extends Component{
                         <Menu
                             selectedMenuItemStyle={{color:'#00c8fb'}}
                         >
-                            <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/dev/user/auth')} leftIcon={<Pantool />} />
-                            <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/dev/movie/list')} leftIcon={<RemoveRedEye />} />
-                            <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/dev/movie/add')} leftIcon={<PlusOne />} />
-                            <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/dev/song/list')} leftIcon={<Music />} />
-                            <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/dev/album/add')} leftIcon={<Photo />} />
-                            <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/dev/album/list')} leftIcon={<Photo />} />
-                            <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/dev/learnrecord')} leftIcon={<FingerPrint />} />
-                            <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/dev/autoplan')} leftIcon={<Car />} />
+                            <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/portal/user/auth')} leftIcon={<Pantool />} />
+                            <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/portal/movie/list')} leftIcon={<RemoveRedEye />} />
+                            <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/portal/movie/add')} leftIcon={<PlusOne />} />
+                            <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/portal/song/list')} leftIcon={<Music />} />
+                            <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/portal/album/add')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/portal/album/list')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/portal/learnrecord')} leftIcon={<FingerPrint />} />
+                            <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/portal/autoplan')} leftIcon={<Car />} />
                             {/*{<MenuItem primaryText="新增产品" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />}*/}
                             {/* <Divider /> */}
                         </Menu>
