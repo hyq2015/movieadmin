@@ -141,17 +141,18 @@ class AddMovie extends Component{
                     <ContentAdd />
                 </FloatingActionButton>
                 </div>
-                <div style={{position:'relative',marginBottom:20}}>
-                    {/* <CircularProgress
+                {this.state.previewImgUrl ?
+                    <div style={{position:'relative',marginBottom:20}}>
+                        {/* <CircularProgress
                         mode="determinate"
                         value={this.state.uploadProgress}
                         size={80}
                         thickness={5}
                         style={{position:'absolute',top:10,left:10,zIndex:100,display:this.state.uploadProgress>0 ? 'inline-block' : 'none'}}
                     /> */}
-                    <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:this.state.previewImgUrl ? 'inline-block' : 'none'}}/>
-                </div>
-                
+                        <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:this.state.previewImgUrl ? 'inline-block' : 'none'}}/>
+                    </div> : null
+                }
                 <RaisedButton label="提交数据" primary={true} onClick={()=>this.props.addmovieActions.Addmovie(this.state.movie,this.props.history)} style={{width:'100%'}} />
                 <RaisedButton label="开始上传" primary={true} onClick={this.startUpload} style={{width:'100%'}} />
                 <RaisedButton label="Node调用java接口" primary={true} onClick={this.getJavaData} style={{width:'100%'}} />
