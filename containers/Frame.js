@@ -8,24 +8,12 @@ import AppBar from 'material-ui/AppBar';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import RemoveRedEye from 'material-ui/svg-icons/av/movie';
 import PlusOne from 'material-ui/svg-icons/av/videocam';
-import ContentLink from 'material-ui/svg-icons/content/link';
-import FingerPrint from 'material-ui/svg-icons/action/fingerprint';
-import Divider from 'material-ui/Divider';
-import ContentCopy from 'material-ui/svg-icons/content/content-copy';
-import Download from 'material-ui/svg-icons/file/file-download';
-import Pantool from 'material-ui/svg-icons/action/lock';
-import Delete from 'material-ui/svg-icons/action/delete';
-import Music from 'material-ui/svg-icons/av/library-music';
-import Photo from 'material-ui/svg-icons/image/add-a-photo';
 import Car from 'material-ui/svg-icons/maps/directions-car';
-import FontIcon from 'material-ui/FontIcon';
 import Toggle from 'material-ui/Toggle';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import Loader from '../components/loader'
 
@@ -58,6 +46,7 @@ class Frame extends Component{
     componentDidMount(){
         console.log('进入app')
         console.log(this.props.history)
+        this.props.changeMenuStatus(false)
         if(this.props.history.location.pathname.indexOf('baiyue')==-1){
             this.props.getCurrentUser(this.props.history)
         }
@@ -75,6 +64,9 @@ class Frame extends Component{
         // this.props.history.push(link)
     }
     componentDidUpdate(){
+        if(this.props.user && this.props.user.mobile){
+            this.props.changeMenuStatus(true)
+        }
         if(this.props.user && this.props.user.bgmusic){
             if(this.props.musicPlaying){
                 this.refs.bgmusic.play()
@@ -82,7 +74,7 @@ class Frame extends Component{
                 this.refs.bgmusic.pause()
             }
         }
-        
+
     }
     toggle(e,checked){
         if(!checked){
@@ -120,37 +112,35 @@ class Frame extends Component{
                     {this.props.errorTxt}
                 </Dialog>
                 <AppBar
-                    title="梦想工作台"
+                    title="入住易"
                     style={{position:'fixed',top:0,left:0}}
                     iconStyleRight={{display:'flex',alignItems:'center',marginTop:0}}
-                    iconElementRight={<Toggle 
-                        label="music" trackSwitchedStyle={{backgroundColor:'#fff'}}
-                        thumbSwitchedStyle={{backgroundColor:'#00c8fb'}}
-                        labelStyle={{color:'#fff'}}
-                        onToggle={this.toggle}
-                        toggled={this.props.musicPlaying}
-                    />}
+                    iconElementRight={
+                        <div className="user_nickname">{this.props.user.nickname ? this.props.user.nickname : '请登录'}</div>
+                    }
                 />
                 <div>
                     <audio src={this.props.user && this.props.user.bgmusic ? this.props.user.bgmusic : ''} autoPlay ref="bgmusic"></audio>
                 </div>
-                {this.props.showMenu ?
+                {/*{this.props.showMenu ?*/}
                     <Paper style={style.paper}>
                         <Menu
                             selectedMenuItemStyle={{color:'#00c8fb'}}
                         >
-                            <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/user/auth')} leftIcon={<Pantool />} />
-                            <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/movie/list')} leftIcon={<RemoveRedEye />} />
-                            <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/movie/add')} leftIcon={<PlusOne />} />
-                            <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/song/list')} leftIcon={<Music />} />
-                            <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/album/add')} leftIcon={<Photo />} />
-                            <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/album/list')} leftIcon={<Photo />} />
-                            <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/learnrecord')} leftIcon={<FingerPrint />} />
-                            <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />
+                            <MenuItem primaryText="登录登出" onClick={()=>this.clickItem('/dev/user/auth')} leftIcon={<Pantool />} />
+                            <MenuItem primaryText="收藏电影" onClick={()=>this.clickItem('/dev/movie/list')} leftIcon={<RemoveRedEye />} />
+                            <MenuItem primaryText="添加电影" onClick={()=>this.clickItem('/dev/movie/add')} leftIcon={<PlusOne />} />
+                            <MenuItem primaryText="音乐魔盒" onClick={()=>this.clickItem('/dev/song/list')} leftIcon={<Music />} />
+                            <MenuItem primaryText="绚丽影集" onClick={()=>this.clickItem('/dev/album/add')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="影集列表" onClick={()=>this.clickItem('/dev/album/list')} leftIcon={<Photo />} />
+                            <MenuItem primaryText="代码狂魔" onClick={()=>this.clickItem('/dev/learnrecord')} leftIcon={<FingerPrint />} />
+                            <MenuItem primaryText="四轮计划" onClick={()=>this.clickItem('/dev/autoplan')} leftIcon={<Car />} />
+                            {/*{<MenuItem primaryText="新增产品" onClick={()=>this.clickItem('/autoplan')} leftIcon={<Car />} />}*/}
                             {/* <Divider /> */}
                         </Menu>
-                    </Paper> : null
-                }
+                    </Paper>
+                    // : null
+                // }
 
                 <div className="frame">
                         {this.props.pageLoaderShow ? 

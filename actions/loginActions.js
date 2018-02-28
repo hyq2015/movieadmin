@@ -15,8 +15,9 @@ export function UserLogin(jsondata,history){
                 })
                 dispatch(frameActions.showSuccessToast('登录成功',2000))
                 dispatch(frameActions.userStatusUpdate(res.data))
+                dispatch(frameActions.changeMenuStatus(true))
                 history.push({
-                    pathname:'/movie/list'
+                    pathname:'/dev/movie/list'
                 })
                 })
             .catch(err=>{

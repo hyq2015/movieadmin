@@ -24,7 +24,7 @@ module.exports=function(targetid,completeCallback,uploadProgressCallback,token){
         dragdrop: false,                     // 开启可拖曳上传
         // drop_element: 'container',          // 拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
         chunk_size: '4mb',                  // 分块上传时，每块的体积
-        auto_start: true,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
+        auto_start: false,                   // 选择文件后自动上传，若关闭需要自己绑定事件触发上传
         //x_vars : {
         //    查看自定义变量
         //    'time' : function(up,file) {
@@ -79,4 +79,5 @@ module.exports=function(targetid,completeCallback,uploadProgressCallback,token){
             // }
         }
     });
+    return uploader
 }

@@ -28,17 +28,17 @@ const Routes=()=>{
         // <Router history={browserHistory}>
             <Frame>
                 <Switch>
-                    <Route path="/" exact component={Login}/>
+                    <Route path="/dev" exact component={Login}/>
                     {/*<Route path="/" exact component={BaiYue}/>*/}
-                    <Route path="/user/auth" exact component={Login}/>
-                    <Route path="/movie/list" component={Play}></Route>
-                    <Route path="/movie/add" component={AddMovie}></Route>
-                    <Route path="/learnrecord" component={LearnRecord}></Route>
-                    <Route path="/song/list" component={Addsong}></Route>
-                    <Route path="/album/add" component={Addalbum}></Route>
-                    <Route path="/album/list" component={AlbumList}></Route>
-                    <Route path="/autoplan" component={Autoplan}></Route>
-                    <Route path="/baiyue" component={BaiYue}></Route>
+                    <Route path="/dev/user/auth" exact component={Login}/>
+                    <Route path="/dev/movie/list" component={Play}></Route>
+                    <Route path="/dev/movie/add" component={AddMovie}></Route>
+                    <Route path="/dev/learnrecord" component={LearnRecord}></Route>
+                    <Route path="/dev/song/list" component={Addsong}></Route>
+                    <Route path="/dev/album/add" component={Addalbum}></Route>
+                    <Route path="/dev/album/list" component={AlbumList}></Route>
+                    <Route path="/dev/autoplan" component={Autoplan}></Route>
+                    <Route path="/dev/baiyue" component={BaiYue}></Route>
                 </Switch>
                 
             </Frame>

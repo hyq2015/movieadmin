@@ -92,6 +92,10 @@ export const URL={
     'addStatistic':{
         'url':'/statistic',
         'method':'post'
+    },
+    getJavaData:{
+        method:'get',
+        url:BASE_URL+'/portal/javadata'
     }
 
 }

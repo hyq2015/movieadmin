@@ -39,6 +39,8 @@ class AddMovie extends Component{
         this.changeVal=this.changeVal.bind(this)
         this.previewImg=this.previewImg.bind(this)
         this.uploadProgress=this.uploadProgress.bind(this)
+        this.startUpload=this.startUpload.bind(this)
+        this.getJavaData=this.getJavaData.bind(this)
     }
     componentDidMount(){
         // this.props.addmovieActions.getQiniuToken();
@@ -74,6 +76,12 @@ class AddMovie extends Component{
         this.setState({
             uploadProgress:percent
         })
+    }
+    startUpload(){
+        Uploader.start();
+    }
+    getJavaData(){
+        this.props.addmovieActions.getJavaData()
     }
     render(){
         return(
@@ -144,7 +152,9 @@ class AddMovie extends Component{
                     <img src={this.state.previewImgUrl+PUBLIC.cropImg(100,100)} style={{width:100,height:100,display:this.state.previewImgUrl ? 'inline-block' : 'none'}}/>
                 </div>
                 
-                <RaisedButton label="提交" primary={true} onClick={()=>this.props.addmovieActions.Addmovie(this.state.movie,this.props.history)} style={{width:'100%'}} />
+                <RaisedButton label="提交数据" primary={true} onClick={()=>this.props.addmovieActions.Addmovie(this.state.movie,this.props.history)} style={{width:'100%'}} />
+                <RaisedButton label="开始上传" primary={true} onClick={this.startUpload} style={{width:'100%'}} />
+                <RaisedButton label="Node调用java接口" primary={true} onClick={this.getJavaData} style={{width:'100%'}} />
             </div>
         )
     }

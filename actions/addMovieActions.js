@@ -50,3 +50,16 @@ export function AddStatistic(statistic, history) {
             })
     }
 }
+
+
+export function getJavaData() {
+    return (dispatch, getState) => {
+        XHR('getJavaData')
+            .then(res => {
+                dispatch(frameActions.showSuccessToast('操作成功', 2000))
+            })
+            .catch(err => {
+                dispatch(frameActions.showModal(err.message));//在一个action中触发另一个action,可用于组件之间通信!
+            })
+    }
+}
