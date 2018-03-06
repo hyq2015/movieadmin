@@ -116,7 +116,7 @@ const XHR=(name,jsondata,history)=>{
                         if(err.response.status==403){//未登录
                             // window.location.href='/user/auth';
                             history.replace({
-                                pathname:'/portal/admin/user/auth'
+                                pathname:'/portal/user/auth'
                             })
                             // history.replace({
                             //     pathname:'/user/auth'
@@ -149,7 +149,7 @@ const XHR=(name,jsondata,history)=>{
                         if(err.response.status==403){//未登录
                             // window.location.href='/user/auth';
                             history.replace({
-                                pathname:'/portal/admin/user/auth'
+                                pathname:'/portal/user/auth'
                             })
                             // history.replace({
                             //     pathname:'/user/auth'
